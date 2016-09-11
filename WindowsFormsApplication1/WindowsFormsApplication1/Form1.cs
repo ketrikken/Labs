@@ -12,8 +12,8 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    
-    public struct popo
+   
+    public struct point
     {
         public float x;
         public float y;
@@ -22,53 +22,90 @@ namespace WindowsFormsApplication1
     {
         bool IsCorrectData = false;
         int countPens;
-        string[] color;
         int step;
         double corner;
-        popo[] points;
-        Graphics gr;       //объявляем объект - графику, на которой будем рисовать
-        Pen[] p;             //объявляем объект - карандаш, которым будем рисовать контур
-        SolidBrush fon;    //объявляем объект - заливки, для заливки соответственно фона
-        SolidBrush fig;    //и внутренности рисуемой фигуры
-        popo[] startPoints;
-        Random rand;      // объект, для получения случайных чисел
-        ///новые изменения, комит от 10,09,2016 @Миша
+        point[] points;
+        Graphics gr;       //We declare an object - graphics, which will draw
+        Pen[] p;            //We declare an object - a pencil, which will draw the contour
+        Pen penFon;
+        SolidBrush fon;    //We declare an object - fill, to fill the background respectively
+        point[] startPoints;
         float firstXFactor = 0;
         float firstYFactor = 0;
         float secondXFactor = 0;
         float secondYFactor = 0;
 
-        //
+        /**
+         * Set Color for pen
+         * 
+         * @return void
+         * */
+        public void SetColorPen()
+        {
+            penFon = new Pen(Color.Black);
+            p = new Pen[3];           
+            p[0] = new Pen(Color.Lime);
+            p[1] = new Pen(Color.Coral);
+            p[2] = new Pen(Color.FloralWhite);
+        }
+
+        /**
+         * Construct
+         * 
+         * @return void
+         * */
         public Form1()
         {
             countPens = 0;
             InitializeComponent();
-            step = 10;
-            corner = 15;
+            step = 7;
+            corner = 231;
             
-            startPoints = new popo[3];
-          /*  startPoints[0].x = 0;
-            startPoints[0].y = 0;
-            startPoints[1].x = 0;
-            startPoints[1].y = -30;
-            startPoints[2].x = 40;
-            startPoints[2].y = 0;*/
-            points = new popo[3];
+            startPoints = new point[3];
+            points = new point[3];
+            SetColorPen();
             points = startPoints;
         }
-        private double Corner(double aa)
+        /**
+         * Аngle calculation
+         * 
+         * @return double
+         * */
+        private double Corner(double cor)
         {
-            return aa * (Math.PI / 180);
+            return cor * (Math.PI / 180);
         }
-        private void DrawRectangle()
+        /**
+         * Draw a triangle
+         * 
+         * @return double
+         * */
+        private void DrawTriangleFon()
         {
-            gr.DrawLine(p[countPens%3], points[0].x, points[0].y, points[1].x, points[1].y);
-            gr.DrawLine(p[countPens%3], points[0].x, points[0].y, points[2].x, points[2].y);
-            gr.DrawLine(p[countPens%3], points[1].x, points[1].y, points[2].x, points[2].y);
+            
+            gr.DrawLine(penFon, points[0].x, points[0].y, points[1].x, points[1].y);
+            gr.DrawLine(penFon, points[0].x, points[0].y, points[2].x, points[2].y);
+            gr.DrawLine(penFon, points[1].x, points[1].y, points[2].x, points[2].y);
         }
+        /**
+         * Draw a triangle by color fon
+         * 
+         * @return double
+         * */
+        private void DrawTriangle()
+        {
+            gr.DrawLine(p[countPens % 3], points[0].x, points[0].y, points[1].x, points[1].y);
+            gr.DrawLine(p[countPens % 3], points[0].x, points[0].y, points[2].x, points[2].y);
+            gr.DrawLine(p[countPens % 3], points[1].x, points[1].y, points[2].x, points[2].y);
+        }
+        /**
+         * Moving the pieces
+         * 
+         * @return void
+         * */
         private void Shift()
         {
-            popo[] tempPoints = points;
+            point[] tempPoints = points;
             int tempStep = step;
             bool flag = true;
 
@@ -83,7 +120,6 @@ namespace WindowsFormsApplication1
                 flag = false;
                 for (int i = 0; i < 3; ++i)
                 {
-
                     if (points[i].x >= ClientSize.Width || points[i].x <= 0)
                     {
                         countPens = ++countPens % 3;
@@ -99,71 +135,71 @@ namespace WindowsFormsApplication1
                         flag = true;
                         break;
                     }
-
                 }
             }
 
             startPoints = tempPoints;
         }
 
-
+        /**
+        * Button click
+        * 
+        * @return void
+        * */
         private void button1_Click(object sender, EventArgs e)
         {
             if (!IsRightData())
             {
-                AnswerLabel.Text = "EROR!Again!";
+                AnswerLabel.Text = "Неверные данные";
                 IsCorrectData = false;
             }
             else
             {
                 IsCorrectData = true;
-                AnswerLabel.Text = "OK";
-               // startPoints = new popo[3];
-
-                /*startPoints[0].x = Convert.ToInt32(textBox1.Text);
-                startPoints[0].y = int.Parse(textBox2.Text);
-                startPoints[1].x = int.Parse(textBox3.Text);
-                startPoints[1].y = int.Parse(textBox4.Text);
-                startPoints[2].x = int.Parse(textBox5.Text);
-                startPoints[2].y = int.Parse(textBox6.Text);*/
+                AnswerLabel.Text = "Данные корректны";
                 firstXFactor = startPoints[0].x - startPoints[1].x;
                 firstYFactor = startPoints[0].y - startPoints[1].y;
                 secondXFactor = startPoints[0].x - startPoints[2].x;
                 secondYFactor = startPoints[0].y - startPoints[2].y;
 
-                gr = pictureBox1.CreateGraphics();  //инициализируем объект типа графики
-                                                    // привязав  к PictureBox
+                gr = pictureBox1.CreateGraphics();  //initialize an object of type Graphics
+                                                    // tied to a PictureBox
 
-                p = new Pen[3];           // задали цвет для карандаша
-                p[0] = new Pen(Color.Green);
-                p[1] = new Pen(Color.Coral);
-                p[2] = new Pen(Color.FloralWhite);
-
-                fon = new SolidBrush(Color.Black); // и для заливки
-                fig = new SolidBrush(Color.Purple);
-
-                rand = new Random();               //инициализируем объект для рандомных числе
-
+                fon = new SolidBrush(Color.Black); 
                 gr.FillRectangle(fon, 0, 0, pictureBox1.Width, pictureBox1.Height);
                 timer1.Enabled = true;
             }
 
 
         }
+        /**
+        * Timer tick
+        * 
+        * @return void
+        * */
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (IsCorrectData)
             {
-                //сначала будем очищать область рисования цветом фона
-                gr.FillRectangle(fon, 0, 0, pictureBox1.Width, pictureBox1.Height);
+                //сначала будем очищать область рисования цветом фона(1)
+                //  gr.FillRectangle(fon, 0, 0, pictureBox1.Width, pictureBox1.Height);
+
+                // очищение фона(2)
+                // gr.Clear(Color.Black);
+
+                // очищение рисованием цвета фона(3)
+                DrawTriangleFon();
+
                 Shift();
-                DrawRectangle();
+                DrawTriangle();
             };
-
         }
-
-        ///новые изменения, комит от 10,09,2016 @Миша
-        bool IsRightData()
+        /**
+       * Check for correct points
+       * 
+       * @return bool
+       * */
+        private bool IsRightData()
         {
             int i = 0;
             int j = 1;
@@ -172,19 +208,16 @@ namespace WindowsFormsApplication1
                 int result;
                 if (String.IsNullOrEmpty(c.Text) || !Int32.TryParse(c.Text, out result))
                 {
-
                     return false;
                 }
                 else
                 {
                     if (j % 2 == 1)
                     {
-                        
                         if (Int32.Parse(c.Text) < -9 || Int32.Parse(c.Text) >= 501)
                             return false;
                         else
                             startPoints[i].x = Int32.Parse(c.Text);
-                        
                     }
                     else
                     {
