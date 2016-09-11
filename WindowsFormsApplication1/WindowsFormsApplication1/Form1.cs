@@ -35,6 +35,7 @@ namespace WindowsFormsApplication1
         float secondXFactor = 0;
         float secondYFactor = 0;
 
+
         /**
          * Set Color for pen
          * 
@@ -65,6 +66,12 @@ namespace WindowsFormsApplication1
             points = new point[3];
             SetColorPen();
             points = startPoints;
+
+            this.comboBox1.Items.Add("Фон");
+            this.comboBox1.Items.Add("Окно");
+            this.comboBox1.Items.Add("Спрайт");
+            this.comboBox1.SelectedIndex = 0;
+            
         }
         /**
          * Аngle calculation
@@ -181,14 +188,15 @@ namespace WindowsFormsApplication1
         {
             if (IsCorrectData)
             {
+                if (comboBox1.SelectedIndex == 0)
                 //сначала будем очищать область рисования цветом фона(1)
-                //  gr.FillRectangle(fon, 0, 0, pictureBox1.Width, pictureBox1.Height);
-
-                // очищение фона(2)
-                // gr.Clear(Color.Black);
-
-                // очищение рисованием цвета фона(3)
-                DrawTriangleFon();
+                 gr.FillRectangle(fon, 0, 0, pictureBox1.Width, pictureBox1.Height);
+                if (comboBox1.SelectedIndex == 1)
+                    // очищение фона(2)
+                     gr.Clear(Color.Black);
+                if (comboBox1.SelectedIndex == 2)
+                    // очищение рисованием цвета фона(3)
+                    DrawTriangleFon();
 
                 Shift();
                 DrawTriangle();
@@ -231,6 +239,11 @@ namespace WindowsFormsApplication1
                 }
             }
             return true;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
