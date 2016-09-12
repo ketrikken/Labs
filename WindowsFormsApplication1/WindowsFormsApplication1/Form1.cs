@@ -237,14 +237,14 @@ namespace WindowsFormsApplication1
                 {
                     if (j % 2 == 1)
                     {
-                        if (Int32.Parse(c.Text) < -900 || Int32.Parse(c.Text) >= 501)
+                        if (Int32.Parse(c.Text) < -100 || Int32.Parse(c.Text) > 100)
                             return false;
                         else
                             startPoints[i].x = GetX(Int32.Parse(c.Text));
                     }
                     else
                     {
-                        if (Int32.Parse(c.Text) < -200 || Int32.Parse(c.Text) >= 400)
+                        if (Int32.Parse(c.Text) < -20 || Int32.Parse(c.Text) > 50)
                             return false;
                         else
                             startPoints[i].y = GetY(Int32.Parse(c.Text));
