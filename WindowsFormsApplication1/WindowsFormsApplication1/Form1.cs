@@ -36,6 +36,8 @@ namespace WindowsFormsApplication1
         float secondYFactor = 0;
 
 
+
+       
         /**
          * Set Color for pen
          * 
@@ -49,7 +51,18 @@ namespace WindowsFormsApplication1
             p[1] = new Pen(Color.Coral);
             p[2] = new Pen(Color.FloralWhite);
         }
+        public void SetMainCoordinates()
+        {
+            int Top = ClientSize.Height;
+            int Left = 0;
+            int Width = ClientSize.Width;
+            int Height = ClientSize.Height;
 
+            int x_Min = -100;
+            int x_Max = 100;
+            int y_Min = -100;
+            int y_Max = 100;
+        }
         /**
          * Construct
          * 
@@ -65,12 +78,14 @@ namespace WindowsFormsApplication1
             startPoints = new point[3];
             points = new point[3];
             SetColorPen();
+   
             points = startPoints;
 
             this.comboBox1.Items.Add("Фон");
             this.comboBox1.Items.Add("Окно");
             this.comboBox1.Items.Add("Спрайт");
             this.comboBox1.SelectedIndex = 0;
+
             
         }
         /**
@@ -222,17 +237,17 @@ namespace WindowsFormsApplication1
                 {
                     if (j % 2 == 1)
                     {
-                        if (Int32.Parse(c.Text) < -9 || Int32.Parse(c.Text) >= 501)
+                        if (Int32.Parse(c.Text) < -900 || Int32.Parse(c.Text) >= 501)
                             return false;
                         else
-                            startPoints[i].x = Int32.Parse(c.Text);
+                            startPoints[i].x = GetX(Int32.Parse(c.Text));
                     }
                     else
                     {
-                        if (Int32.Parse(c.Text) < -2 || Int32.Parse(c.Text) >= 250)
+                        if (Int32.Parse(c.Text) < -200 || Int32.Parse(c.Text) >= 400)
                             return false;
                         else
-                            startPoints[i].y = Int32.Parse(c.Text);
+                            startPoints[i].y = GetY(Int32.Parse(c.Text));
                         ++i;
                     }
                     ++j;
@@ -241,6 +256,32 @@ namespace WindowsFormsApplication1
             return true;
         }
 
+        private float GetX(float X)
+        {
+            int nLeft = 1;
+            int nRight = 631;
+            int mTop = 1;
+            int mBottom = 369;
+
+            int xLeft = -100;
+            int xRight = 100;
+            int yTop = 50;
+            int yBottom = -50;
+            return (X - xLeft) / (xRight - xLeft)*(nRight-nLeft)+nLeft;
+        }
+        private float GetY(float Y)
+        {
+            int nLeft = 1;
+            int nRight = 631;
+            int mTop = 1;
+            int mBottom = 369;
+
+            int xLeft = -100;
+            int xRight = 100;
+            int yTop = 50;
+            int yBottom = -50;
+            return (Y - yBottom)/(yTop - yBottom)*(mTop - mBottom)+mBottom;
+        }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
