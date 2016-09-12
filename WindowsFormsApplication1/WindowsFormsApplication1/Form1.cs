@@ -34,6 +34,7 @@ namespace WindowsFormsApplication1
         float firstYFactor = 0;
         float secondXFactor = 0;
         float secondYFactor = 0;
+        int INF = (int)1e5;
 
 
 
@@ -46,6 +47,7 @@ namespace WindowsFormsApplication1
         public void SetColorPen()
         {
             penFon = new Pen(Color.Black);
+         
             p = new Pen[3];           
             p[0] = new Pen(Color.Lime);
             p[1] = new Pen(Color.Coral);
@@ -72,7 +74,7 @@ namespace WindowsFormsApplication1
         {
             countPens = 0;
             InitializeComponent();
-            step = 7;
+            step = 5;
             corner = 231;
             
             startPoints = new point[3];
@@ -81,9 +83,9 @@ namespace WindowsFormsApplication1
    
             points = startPoints;
 
-            this.comboBox1.Items.Add("Фон");
-            this.comboBox1.Items.Add("Окно");
             this.comboBox1.Items.Add("Спрайт");
+            this.comboBox1.Items.Add("Окно");
+            this.comboBox1.Items.Add("Фон");
             this.comboBox1.SelectedIndex = 0;
 
             
@@ -199,18 +201,28 @@ namespace WindowsFormsApplication1
         * 
         * @return void
         * */
+        private Rectangle returnRect()
+        {
+            int x1 = 0, x = INF, y1 = 0, y = INF;
+            for(int i = 0; i < 3; ++i)
+            {
+                x1 = (int)(Math.Max(x1, points[i].x));
+                x = (int)Math.Min(x, points[i].x);
+                y1 = (int)Math.Max(y1, points[i].y);
+                y = (int)Math.Min(y, points[i].y);
+            }
+            Rectangle temp = new Rectangle(x, y, x1 - x + 3, y1 - y + 3);
+            return temp;
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (IsCorrectData)
             {
                 if (comboBox1.SelectedIndex == 0)
-                //сначала будем очищать область рисования цветом фона(1)
-                 gr.FillRectangle(fon, 0, 0, pictureBox1.Width, pictureBox1.Height);
+                    gr.FillRectangle(fon, returnRect());
                 if (comboBox1.SelectedIndex == 1)
-                    // очищение фона(2)
-                     gr.Clear(Color.Black);
+                    gr.Clear(Color.Black);
                 if (comboBox1.SelectedIndex == 2)
-                    // очищение рисованием цвета фона(3)
                     DrawTriangleFon();
 
                 Shift();
