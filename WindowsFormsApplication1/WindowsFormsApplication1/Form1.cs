@@ -53,18 +53,7 @@ namespace WindowsFormsApplication1
             p[1] = new Pen(Color.Coral);
             p[2] = new Pen(Color.FloralWhite);
         }
-        public void SetMainCoordinates()
-        {
-            int Top = ClientSize.Height;
-            int Left = 0;
-            int Width = ClientSize.Width;
-            int Height = ClientSize.Height;
-
-            int x_Min = -100;
-            int x_Max = 100;
-            int y_Min = -100;
-            int y_Max = 100;
-        }
+       
         /**
          * Construct
          * 
