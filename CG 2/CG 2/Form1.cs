@@ -93,7 +93,7 @@ namespace CG_2
         }
         private void PutPixel(int x,int y)
         {
-            gr.FillRectangle(Brushes.Azure, x, y, 1, 1);
+            gr.FillRectangle(Brushes.Purple, x, y, 1, 1);
         }
         private int GetX(int X)
         {

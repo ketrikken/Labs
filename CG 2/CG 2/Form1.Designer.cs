@@ -52,16 +52,18 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.button1.Location = new System.Drawing.Point(26, 495);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(144, 56);
             this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Text = "старт";
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // X_Box
             // 
+            this.X_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.X_Box.Location = new System.Drawing.Point(270, 531);
             this.X_Box.Name = "X_Box";
             this.X_Box.Size = new System.Drawing.Size(37, 20);
@@ -69,6 +71,7 @@
             // 
             // Y_Box
             // 
+            this.Y_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.Y_Box.Location = new System.Drawing.Point(368, 531);
             this.Y_Box.Name = "Y_Box";
             this.Y_Box.Size = new System.Drawing.Size(34, 20);
@@ -113,6 +116,7 @@
             // 
             // RBox
             // 
+            this.RBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.RBox.Location = new System.Drawing.Point(548, 531);
             this.RBox.Name = "RBox";
             this.RBox.Size = new System.Drawing.Size(34, 20);
@@ -131,6 +135,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1135, 573);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.RBox);
