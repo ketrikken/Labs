@@ -38,6 +38,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.RBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.sentreX_Box = new System.Windows.Forms.TextBox();
+            this.sentreY_Box = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,12 +133,30 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "\r\n\r\n";
             // 
+            // sentreX_Box
+            // 
+            this.sentreX_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.sentreX_Box.Location = new System.Drawing.Point(674, 527);
+            this.sentreX_Box.Name = "sentreX_Box";
+            this.sentreX_Box.Size = new System.Drawing.Size(34, 20);
+            this.sentreX_Box.TabIndex = 10;
+            // 
+            // sentreY_Box
+            // 
+            this.sentreY_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.sentreY_Box.Location = new System.Drawing.Point(749, 527);
+            this.sentreY_Box.Name = "sentreY_Box";
+            this.sentreY_Box.Size = new System.Drawing.Size(34, 20);
+            this.sentreY_Box.TabIndex = 11;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1135, 573);
+            this.Controls.Add(this.sentreY_Box);
+            this.Controls.Add(this.sentreX_Box);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.RBox);
             this.Controls.Add(this.label3);
@@ -167,6 +187,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox RBox;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox sentreX_Box;
+        private System.Windows.Forms.TextBox sentreY_Box;
     }
 }
 

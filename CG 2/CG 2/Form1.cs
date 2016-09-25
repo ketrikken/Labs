@@ -41,7 +41,9 @@ namespace CG_2
             if ((Point_Coor.X < 0) && (Point_Coor.Y >= Point_Coor.X) && (Point_Coor.Y < 0) && r >= 0)
             {
                 SetLine(Start_Coor, Point_Coor);
-                SetArc(r);
+                int x = Int32.Parse(sentreX_Box.Text);
+                int y = Int32.Parse(sentreY_Box.Text);
+                SetArc(r, x, y);
             }
             else
             {
@@ -49,24 +51,37 @@ namespace CG_2
             }
         }
             
-        private void SetArc(int r)
+        private void SetArc(int radius, int _x, int _y)
         {
-
-            Point start = new Point(-r, 0);
-            int d = 3 - 2 * r;
-            while(start.X < start.Y)
+            int x = -radius, y = 0, gap = 0, delta = (2 - 2 * radius);
+            while (x <= 0 && x <= y)
             {
-                PutPixel(GetX(start.X), GetY(start.Y));
-                if(d > 0)
+                PutPixel(GetX(_x + x), GetY(_y + y));
+                PutPixel(GetX(_x + x), GetY(_y - y));
+                PutPixel(GetX(_x - x), GetY(_y - y));
+                PutPixel(GetX(_x - x), GetY(_y + y));
+                PutPixel(GetX(_y + y), GetY(_x + x));
+                PutPixel(GetX(_y - y), GetY(_x + x));
+                PutPixel(GetX(_y - y), GetY(_x - x));
+                PutPixel(GetX(_y + y), GetY(_x - x));
+
+                gap = 2 * (delta + y) - 1;
+                if (delta < 0 && gap <= 0)
                 {
-                    d = d + 4 * start.Y + 6;
+                    y--;
+                    delta -= 2 * y + 1;
+                    continue;
                 }
-                else
+                if (delta > 0 && gap > 0)
                 {
-                    d = d + 4 * (start.Y - start.X) + 10;
-                    start.X++;
+                  
+                    x++;
+                    delta += 2 * x + 1;
+                    continue;
                 }
-                start.Y--;
+                x++;
+                delta += 2 * (x - y);
+                y--;
             }
 
         }
@@ -93,7 +108,7 @@ namespace CG_2
         }
         private void PutPixel(int x,int y)
         {
-            gr.FillRectangle(Brushes.Purple, x, y, 1, 1);
+            gr.FillRectangle(Brushes.Aqua, x, y, 1, 1);
         }
         private int GetX(int X)
         {
