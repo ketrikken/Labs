@@ -30,12 +30,12 @@ namespace CG_2
             gr = pictureBox1.CreateGraphics();  //initialize an object of type Graphics
             fon = new SolidBrush(Color.Black);
 
-            gr.FillRectangle(fon, 0, 0, pictureBox1.Width, pictureBox1.Height);                                   // tied to a PictureBox
+            gr.FillRectangle(fon, 0, 0, pictureBox1.Width, pictureBox1.Height);  // tied to a PictureBox
             gr.DrawLine(p, 0, pictureBox1.Height / 2, pictureBox1.Width, pictureBox1.Height / 2);
             gr.DrawLine(p, pictureBox1.Width / 2, 0, pictureBox1.Width / 2, pictureBox1.Height);
             Point Start_Coor = new Point(0, 0);
             Point Point_Coor = new Point(Int32.Parse(X_Box.Text), Int32.Parse(Y_Box.Text));
-            if ((Point_Coor.X < 0) && (Point_Coor.Y > Point_Coor.X) && (Point_Coor.Y < 0))
+            if ((Point_Coor.X < 0) && (Point_Coor.Y >= Point_Coor.X) && (Point_Coor.Y < 0))
             {
                 SetLine(Start_Coor, Point_Coor);
             }
@@ -44,10 +44,48 @@ namespace CG_2
                 ans_line.Text = "Некорректные данные!";
             }
             //PutPixel(Point_Coor.X, Point_Coor.Y);
-            
+
+            int r = Int32.Parse(RBox.Text);
+            SetArc(r);
             
         }
             
+        private void SetArc(int r)
+        {
+            Point start = new Point(-r, 0);
+            int d = 3 - 2 * r;
+            while(start.X < start.Y)
+            {
+                PutPixel(GetX(start.X), GetY(start.Y));
+                PutPixel(-GetX(start.X), GetY(start.Y));
+                PutPixel(GetX(start.X), -GetY(start.Y));
+                PutPixel(-GetX(start.X), -GetY(start.Y));
+                PutPixel(GetY(start.Y), GetX(start.X));
+                PutPixel(-GetY(start.Y), GetX(start.X));
+                PutPixel(GetY(start.Y), -GetX(start.X));
+                PutPixel(-GetY(start.Y), -GetX(start.X));
+
+                if(d > 0)
+                {
+                    d = d + 4 * start.Y + 6;
+                }
+                else
+                {
+                    d = d + 4 * (start.Y - start.X) + 10;
+                    start.X++;
+                }
+                start.Y--;
+            }
+            if (start.X == start.Y)
+            {
+                PutPixel(GetX(start.X), GetY(start.Y));
+                PutPixel(-GetX(start.X), GetY(start.Y));
+                PutPixel(GetX(start.X), -GetY(start.Y));
+                PutPixel(-GetX(start.X), -GetY(start.Y));
+            }
+
+
+        }
         private void SetLine( Point start, Point finish)
         {
             int x = start.X;
@@ -75,16 +113,16 @@ namespace CG_2
         }
         private int GetX(int X)
         {
-         
             return X + pictureBox1.Width/2;
         }
         private int GetY(int Y)
         {
-           
             return pictureBox1.Height/2-Y;
         }
 
+        private void label3_Click(object sender, EventArgs e)
+        {
 
-
+        }
     }
 }

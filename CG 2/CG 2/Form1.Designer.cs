@@ -35,6 +35,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.ans_line = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.RBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,11 +99,30 @@
             this.ans_line.TabIndex = 6;
             this.ans_line.Text = "Введите координаты точки в 5 октанте";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(517, 487);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(112, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Введите радиус дуги";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // RBox
+            // 
+            this.RBox.Location = new System.Drawing.Point(542, 521);
+            this.RBox.Name = "RBox";
+            this.RBox.Size = new System.Drawing.Size(34, 20);
+            this.RBox.TabIndex = 8;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1135, 573);
+            this.Controls.Add(this.RBox);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.ans_line);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -126,6 +147,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label ans_line;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox RBox;
     }
 }
 
