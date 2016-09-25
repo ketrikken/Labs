@@ -14,17 +14,15 @@ namespace CG_2
     {
         Graphics gr;       //We declare an object - graphics, which will draw
         Pen p = new Pen(Color.Lime);            //We declare an object - a pencil, which will draw the contour
-        Pen penFon;
         SolidBrush fon;    //We declare an object - fill, to fill the background respectively
        
 
         public Form1()
         {
-           
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void BackGround()
         {
             Color pix = Color.Chocolate;
             gr = pictureBox1.CreateGraphics();  //initialize an object of type Graphics
@@ -33,50 +31,32 @@ namespace CG_2
             gr.FillRectangle(fon, 0, 0, pictureBox1.Width, pictureBox1.Height);  // tied to a PictureBox
             gr.DrawLine(p, 0, pictureBox1.Height / 2, pictureBox1.Width, pictureBox1.Height / 2);
             gr.DrawLine(p, pictureBox1.Width / 2, 0, pictureBox1.Width / 2, pictureBox1.Height);
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            BackGround();
             Point Start_Coor = new Point(0, 0);
-            int result;
-            if (String.IsNullOrEmpty(X_Box.Text) || !Int32.TryParse(X_Box.Text, out result) || String.IsNullOrEmpty(Y_Box.Text) || !Int32.TryParse(Y_Box.Text, out result))
+            Point Point_Coor = new Point(Int32.Parse(X_Box.Text), Int32.Parse(Y_Box.Text));
+            int r = Int32.Parse(RBox.Text);
+            if ((Point_Coor.X < 0) && (Point_Coor.Y >= Point_Coor.X) && (Point_Coor.Y < 0) && r >= 0)
             {
-                ans_line.Text = "Некорректные данные!";
+                SetLine(Start_Coor, Point_Coor);
+                SetArc(r);
             }
             else
             {
-                Point Point_Coor = new Point(Int32.Parse(X_Box.Text), Int32.Parse(Y_Box.Text));
-                if ((Point_Coor.X < 0) && (Point_Coor.Y >= Point_Coor.X) && (Point_Coor.Y < 0))
-                {
-                    SetLine(Start_Coor, Point_Coor);
-                }
-                else
-                {
-                    ans_line.Text = "Некорректные данные!";
-                }
-                //PutPixel(Point_Coor.X, Point_Coor.Y);
-            }
-            if (String.IsNullOrEmpty(RBox.Text) || !Int32.TryParse(RBox.Text, out result))
-                {
-                label3.Text = "Некорретный радиус";
-            }
-            else {
-                int r = Int32.Parse(RBox.Text);
-                SetArc(r);
+                label4.Text = "Некорректные данные!";
             }
         }
             
         private void SetArc(int r)
         {
+
             Point start = new Point(-r, 0);
             int d = 3 - 2 * r;
             while(start.X < start.Y)
             {
                 PutPixel(GetX(start.X), GetY(start.Y));
-                PutPixel(-GetX(start.X), GetY(start.Y));
-                PutPixel(GetX(start.X), -GetY(start.Y));
-                PutPixel(-GetX(start.X), -GetY(start.Y));
-                PutPixel(GetY(start.Y), GetX(start.X));
-                PutPixel(-GetY(start.Y), GetX(start.X));
-                PutPixel(GetY(start.Y), -GetX(start.X));
-                PutPixel(-GetY(start.Y), -GetX(start.X));
-
                 if(d > 0)
                 {
                     d = d + 4 * start.Y + 6;
@@ -88,14 +68,6 @@ namespace CG_2
                 }
                 start.Y--;
             }
-            if (start.X == start.Y)
-            {
-                PutPixel(GetX(start.X), GetY(start.Y));
-                PutPixel(-GetX(start.X), GetY(start.Y));
-                PutPixel(GetX(start.X), -GetY(start.Y));
-                PutPixel(-GetX(start.X), -GetY(start.Y));
-            }
-
 
         }
         private void SetLine( Point start, Point finish)
@@ -135,6 +107,11 @@ namespace CG_2
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

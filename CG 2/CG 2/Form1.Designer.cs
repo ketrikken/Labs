@@ -37,6 +37,7 @@
             this.ans_line = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.RBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,10 +48,11 @@
             this.pictureBox1.Size = new System.Drawing.Size(1132, 459);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(26, 488);
+            this.button1.Location = new System.Drawing.Point(26, 495);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(144, 56);
             this.button1.TabIndex = 1;
@@ -60,14 +62,14 @@
             // 
             // X_Box
             // 
-            this.X_Box.Location = new System.Drawing.Point(264, 521);
+            this.X_Box.Location = new System.Drawing.Point(270, 531);
             this.X_Box.Name = "X_Box";
             this.X_Box.Size = new System.Drawing.Size(37, 20);
             this.X_Box.TabIndex = 2;
             // 
             // Y_Box
             // 
-            this.Y_Box.Location = new System.Drawing.Point(362, 521);
+            this.Y_Box.Location = new System.Drawing.Point(368, 531);
             this.Y_Box.Name = "Y_Box";
             this.Y_Box.Size = new System.Drawing.Size(34, 20);
             this.Y_Box.TabIndex = 3;
@@ -75,7 +77,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(222, 524);
+            this.label1.Location = new System.Drawing.Point(228, 534);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(14, 13);
             this.label1.TabIndex = 4;
@@ -84,7 +86,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(330, 524);
+            this.label2.Location = new System.Drawing.Point(336, 534);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(14, 13);
             this.label2.TabIndex = 5;
@@ -93,7 +95,7 @@
             // ans_line
             // 
             this.ans_line.AutoSize = true;
-            this.ans_line.Location = new System.Drawing.Point(236, 487);
+            this.ans_line.Location = new System.Drawing.Point(242, 497);
             this.ans_line.Name = "ans_line";
             this.ans_line.Size = new System.Drawing.Size(205, 13);
             this.ans_line.TabIndex = 6;
@@ -102,25 +104,35 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(517, 487);
+            this.label3.Location = new System.Drawing.Point(502, 498);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(112, 13);
+            this.label3.Size = new System.Drawing.Size(150, 13);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Введите радиус дуги";
+            this.label3.Text = "Введите радиус окружности\r\n";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // RBox
             // 
-            this.RBox.Location = new System.Drawing.Point(542, 521);
+            this.RBox.Location = new System.Drawing.Point(548, 531);
             this.RBox.Name = "RBox";
             this.RBox.Size = new System.Drawing.Size(34, 20);
             this.RBox.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(377, 475);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(7, 26);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "\r\n\r\n";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1135, 573);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.RBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.ans_line);
@@ -149,6 +161,7 @@
         private System.Windows.Forms.Label ans_line;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox RBox;
+        private System.Windows.Forms.Label label4;
     }
 }
 
