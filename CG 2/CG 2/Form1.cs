@@ -34,20 +34,32 @@ namespace CG_2
             gr.DrawLine(p, 0, pictureBox1.Height / 2, pictureBox1.Width, pictureBox1.Height / 2);
             gr.DrawLine(p, pictureBox1.Width / 2, 0, pictureBox1.Width / 2, pictureBox1.Height);
             Point Start_Coor = new Point(0, 0);
-            Point Point_Coor = new Point(Int32.Parse(X_Box.Text), Int32.Parse(Y_Box.Text));
-            if ((Point_Coor.X < 0) && (Point_Coor.Y >= Point_Coor.X) && (Point_Coor.Y < 0))
-            {
-                SetLine(Start_Coor, Point_Coor);
-            }
-            else
+            int result;
+            if (String.IsNullOrEmpty(X_Box.Text) || !Int32.TryParse(X_Box.Text, out result) || String.IsNullOrEmpty(Y_Box.Text) || !Int32.TryParse(Y_Box.Text, out result))
             {
                 ans_line.Text = "Некорректные данные!";
             }
-            //PutPixel(Point_Coor.X, Point_Coor.Y);
-
-            int r = Int32.Parse(RBox.Text);
-            SetArc(r);
-            
+            else
+            {
+                Point Point_Coor = new Point(Int32.Parse(X_Box.Text), Int32.Parse(Y_Box.Text));
+                if ((Point_Coor.X < 0) && (Point_Coor.Y >= Point_Coor.X) && (Point_Coor.Y < 0))
+                {
+                    SetLine(Start_Coor, Point_Coor);
+                }
+                else
+                {
+                    ans_line.Text = "Некорректные данные!";
+                }
+                //PutPixel(Point_Coor.X, Point_Coor.Y);
+            }
+            if (String.IsNullOrEmpty(RBox.Text) || !Int32.TryParse(RBox.Text, out result))
+                {
+                label3.Text = "Некорретный радиус";
+            }
+            else {
+                int r = Int32.Parse(RBox.Text);
+                SetArc(r);
+            }
         }
             
         private void SetArc(int r)
