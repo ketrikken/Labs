@@ -40,6 +40,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.sentreX_Box = new System.Windows.Forms.TextBox();
             this.sentreY_Box = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +55,7 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.button1.Location = new System.Drawing.Point(26, 495);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(144, 56);
@@ -65,24 +66,24 @@
             // 
             // X_Box
             // 
-            this.X_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.X_Box.Location = new System.Drawing.Point(270, 531);
+            this.X_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.X_Box.Location = new System.Drawing.Point(324, 517);
             this.X_Box.Name = "X_Box";
             this.X_Box.Size = new System.Drawing.Size(37, 20);
             this.X_Box.TabIndex = 2;
             // 
             // Y_Box
             // 
-            this.Y_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.Y_Box.Location = new System.Drawing.Point(368, 531);
+            this.Y_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.Y_Box.Location = new System.Drawing.Point(324, 543);
             this.Y_Box.Name = "Y_Box";
-            this.Y_Box.Size = new System.Drawing.Size(34, 20);
+            this.Y_Box.Size = new System.Drawing.Size(37, 20);
             this.Y_Box.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(228, 534);
+            this.label1.Location = new System.Drawing.Point(286, 520);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(14, 13);
             this.label1.TabIndex = 4;
@@ -91,7 +92,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(336, 534);
+            this.label2.Location = new System.Drawing.Point(286, 544);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(14, 13);
             this.label2.TabIndex = 5;
@@ -109,7 +110,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(502, 498);
+            this.label3.Location = new System.Drawing.Point(531, 488);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(150, 13);
             this.label3.TabIndex = 7;
@@ -118,8 +119,8 @@
             // 
             // RBox
             // 
-            this.RBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.RBox.Location = new System.Drawing.Point(548, 531);
+            this.RBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.RBox.Location = new System.Drawing.Point(707, 488);
             this.RBox.Name = "RBox";
             this.RBox.Size = new System.Drawing.Size(34, 20);
             this.RBox.TabIndex = 8;
@@ -135,19 +136,29 @@
             // 
             // sentreX_Box
             // 
-            this.sentreX_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.sentreX_Box.Location = new System.Drawing.Point(674, 527);
+            this.sentreX_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.sentreX_Box.Location = new System.Drawing.Point(707, 538);
             this.sentreX_Box.Name = "sentreX_Box";
             this.sentreX_Box.Size = new System.Drawing.Size(34, 20);
             this.sentreX_Box.TabIndex = 10;
             // 
             // sentreY_Box
             // 
-            this.sentreY_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.sentreY_Box.Location = new System.Drawing.Point(749, 527);
+            this.sentreY_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.sentreY_Box.Location = new System.Drawing.Point(747, 538);
             this.sentreY_Box.Name = "sentreY_Box";
             this.sentreY_Box.Size = new System.Drawing.Size(34, 20);
             this.sentreY_Box.TabIndex = 11;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(512, 545);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(169, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "координаты центра окружности\r\n";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // Form1
             // 
@@ -155,6 +166,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1135, 573);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.sentreY_Box);
             this.Controls.Add(this.sentreX_Box);
             this.Controls.Add(this.label4);
@@ -189,6 +201,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox sentreX_Box;
         private System.Windows.Forms.TextBox sentreY_Box;
+        private System.Windows.Forms.Label label5;
     }
 }
 

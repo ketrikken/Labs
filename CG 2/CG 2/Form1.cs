@@ -12,34 +12,35 @@ namespace CG_2
 {
     public partial class Form1 : Form
     {
-        Graphics gr;       //We declare an object - graphics, which will draw
-        Pen p = new Pen(Color.Lime);            //We declare an object - a pencil, which will draw the contour
-        SolidBrush fon;    //We declare an object - fill, to fill the background respectively
-       
+        Graphics gr;       
+        Pen p = new Pen(Color.Lime);            
+        SolidBrush fon;   
 
         public Form1()
         {
             InitializeComponent();
         }
-
+        // рисуем осикоординат
         private void BackGround()
         {
             Color pix = Color.Chocolate;
-            gr = pictureBox1.CreateGraphics();  //initialize an object of type Graphics
+            gr = pictureBox1.CreateGraphics();  
             fon = new SolidBrush(Color.Black);
 
-            gr.FillRectangle(fon, 0, 0, pictureBox1.Width, pictureBox1.Height);  // tied to a PictureBox
+            gr.FillRectangle(fon, 0, 0, pictureBox1.Width, pictureBox1.Height);  
             gr.DrawLine(p, 0, pictureBox1.Height / 2, pictureBox1.Width, pictureBox1.Height / 2);
             gr.DrawLine(p, pictureBox1.Width / 2, 0, pictureBox1.Width / 2, pictureBox1.Height);
         }
+        // обрабатываем входные данные
         private void button1_Click(object sender, EventArgs e)
         {
             BackGround();
             Point Start_Coor = new Point(0, 0);
             Point Point_Coor = new Point(Int32.Parse(X_Box.Text), Int32.Parse(Y_Box.Text));
             int r = Int32.Parse(RBox.Text);
-            if ((Point_Coor.X < 0) && (Point_Coor.Y >= Point_Coor.X) && (Point_Coor.Y < 0) && r >= 0)
+            if ((Point_Coor.X < 0) && (Point_Coor.Y >= Point_Coor.X) && (Point_Coor.Y < 0) && r >= 0)// проверка на корректность
             {
+                label4.Text = "";
                 SetLine(Start_Coor, Point_Coor);
                 int x = Int32.Parse(sentreX_Box.Text);
                 int y = Int32.Parse(sentreY_Box.Text);
@@ -50,7 +51,8 @@ namespace CG_2
                 label4.Text = "Некорректные данные!";
             }
         }
-            
+
+        // равертка окружности по алгоритму Брезенхема 
         private void SetArc(int radius, int _x, int _y)
         {
             int x = -radius, y = 0, gap = 0, delta = (2 - 2 * radius);
@@ -74,7 +76,6 @@ namespace CG_2
                 }
                 if (delta > 0 && gap > 0)
                 {
-                  
                     x++;
                     delta += 2 * x + 1;
                     continue;
@@ -85,6 +86,7 @@ namespace CG_2
             }
 
         }
+        // развертка прямой
         private void SetLine( Point start, Point finish)
         {
             int x = start.X;
@@ -110,10 +112,12 @@ namespace CG_2
         {
             gr.FillRectangle(Brushes.Aqua, x, y, 1, 1);
         }
+        // вернуть координаты по x в пересчете на декартовую систему
         private int GetX(int X)
         {
             return X + pictureBox1.Width/2;
         }
+        // вернкть координы по y
         private int GetY(int Y)
         {
             return pictureBox1.Height/2-Y;
@@ -127,6 +131,11 @@ namespace CG_2
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
