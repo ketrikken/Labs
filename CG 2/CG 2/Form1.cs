@@ -35,23 +35,70 @@ namespace CG_2
         private void button1_Click(object sender, EventArgs e)
         {
             BackGround();
-            Point Start_Coor = new Point(0, 0);
-            Point Point_Coor = new Point(Int32.Parse(X_Box.Text), Int32.Parse(Y_Box.Text));
-            int r = Int32.Parse(RBox.Text);
-            if ((Point_Coor.X < 0) && (Point_Coor.Y >= Point_Coor.X) && (Point_Coor.Y < 0) && r >= 0)// проверка на корректность
+            if (IsRightData())
             {
-                label4.Text = "";
-                SetLine(Start_Coor, Point_Coor);
-                int x = Int32.Parse(sentreX_Box.Text);
-                int y = Int32.Parse(sentreY_Box.Text);
-                SetArc(r, x, y);
+                Point Start_Coor = new Point(0, 0);
+                Point Point_Coor = new Point(Int32.Parse(X_Box.Text), Int32.Parse(Y_Box.Text));
+                int r = Int32.Parse(RBox.Text);
+                if ((Point_Coor.X < 0) && (Point_Coor.Y >= Point_Coor.X) && (Point_Coor.Y < 0) && r >= 0)// проверка на корректность
+                {
+                    label4.Text = "";
+                    SetLine(Start_Coor, Point_Coor);
+                    int x = Int32.Parse(sentreX_Box.Text);
+                    int y = Int32.Parse(sentreY_Box.Text);
+                    SetArc(r, x, y);
+                }
+                else
+                {
+                    label4.Text = "Некорректные данные!";
+                }
+            }
+        }
+        private bool IsRightData()
+        {
+            int result;
+            bool ret = true;
+            if (String.IsNullOrEmpty(X_Box.Text) || !Int32.TryParse(X_Box.Text, out result))
+            {
+                ans_line.Text = "Некорректный Х";
+                ret = false;
             }
             else
             {
-                label4.Text = "Некорректные данные!";
+                ans_line.Text = "OK";
             }
+            if (String.IsNullOrEmpty(Y_Box.Text) || !Int32.TryParse(Y_Box.Text, out result))
+            {
+                ans_line.Text = "Некорректный Y";
+                ret = false;
+            }
+           
+            if (String.IsNullOrEmpty(RBox.Text) || !Int32.TryParse(RBox.Text, out result))
+            {
+                label3.Text = "Некорректный радиус";
+                ret = false;
+            }
+            else
+            {
+                label3.Text = "OK";
+            }
+            if (String.IsNullOrEmpty(sentreX_Box.Text) || !Int32.TryParse(sentreX_Box.Text, out result))
+            {
+                label5.Text = "Некорректный Х";
+                ret = false;
+            }
+            else
+            {
+                label5.Text = "OK";
+            }
+            if (String.IsNullOrEmpty(sentreY_Box.Text) || !Int32.TryParse(sentreY_Box.Text, out result))
+            {
+                label5.Text = "Некорректный Y";
+                ret = false;
+            }
+            
+            return ret;
         }
-
         // равертка окружности по алгоритму Брезенхема 
         private void SetArc(int radius, int _x, int _y)
         {
