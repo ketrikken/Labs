@@ -89,29 +89,32 @@ int main()
 	//freopen("sum.out", "w", stdout);
 	int n;
 	cin >> n;
+	int firstNode, lastNode;
+	cin >> firstNode >> lastNode;
 	graph.resize(n);
-	forn(i, n)
+	int start, end, dist;
+	while(cin >> start >> end >> dist)
 	{
-		int count;
-		cin >> count;
-		forn(j, count)
-		{
-			int what, from;
-			cin >> from >> what;
-			graph[i].edges.push_back(Edge(--from, what));
-		}
+		start--, end--;
+		graph[start].edges.push_back(Edge(end, dist));
+		
 	}
-	int start, end;
-	cin >> start >> end;
-	Dij(--start);
-	end--;
+	
+	Dij(--firstNode);
+	lastNode--;
 
 	cout << graph[end].dist << endl;
+	vint res;
 	while (graph[end].prev != -1)
 	{
-		cout << graph[end].prev + 1 << ' ';
+		res.push_back(graph[end].prev + 1);
 		end = graph[end].prev;
 	}
 	
+	for(int i = res.size() - 1; i > -1; --i)
+	{
+		cout << res[i] << ' ';
+	}
+	cout << endl;
 	return 0;
 }
