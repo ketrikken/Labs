@@ -86,7 +86,7 @@ void Dij(int s)
 int main()
 {
 	freopen("in.txt", "r", stdin);
-	//freopen("sum.out", "w", stdout);
+	freopen("out.txt", "w", stdout);
 	int n;
 	cin >> n;
 	int firstNode, lastNode;
@@ -103,12 +103,18 @@ int main()
 	Dij(--firstNode);
 	lastNode--;
 
-	cout << graph[end].dist << endl;
-	vint res;
-	while (graph[end].prev != -1)
+	if (graph[lastNode].dist == INF)
 	{
-		res.push_back(graph[end].prev + 1);
-		end = graph[end].prev;
+		cout << "не удалось построить путь" << endl;
+		return 0;
+	}
+	cout << graph[lastNode].dist << endl;
+	vint res;
+	res.push_back(lastNode + 1);
+	while (graph[lastNode].prev != -1)
+	{
+		res.push_back(graph[lastNode].prev + 1);
+		lastNode = graph[lastNode].prev;
 	}
 	
 	for(int i = res.size() - 1; i > -1; --i)

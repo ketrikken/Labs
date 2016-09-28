@@ -4,5 +4,7 @@ c:\users\алатиэль\desktop\cg\labs\indmo\indmo\graph.cpp(39): warning C42
 c:\users\алатиэль\desktop\cg\labs\indmo\indmo\graph.cpp(70): warning C4018: <: несоответствие типов со знаком и без знака
 c:\users\алатиэль\desktop\cg\labs\indmo\indmo\graph.cpp(88): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(240): note:  см. объявление "freopen"
+c:\users\алатиэль\desktop\cg\labs\indmo\indmo\graph.cpp(89): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(240): note:  см. объявление "freopen"
   indMO.vcxproj -> C:\Users\Алатиэль\Desktop\cg\Labs\indMO\Debug\indMO.exe
   indMO.vcxproj -> C:\Users\Алатиэль\Desktop\cg\Labs\indMO\Debug\indMO.pdb (Full PDB)
