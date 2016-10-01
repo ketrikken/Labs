@@ -85,7 +85,7 @@ namespace CG_2
             if (String.IsNullOrEmpty(sentreX_Box.Text) || !Int32.TryParse(sentreX_Box.Text, out result))
             {
                 label5.Text = "Некорректный Х";
-                ret = false;
+                ret = false;//аакувычсм 
             }
             else
             {
@@ -109,10 +109,10 @@ namespace CG_2
                 PutPixel(GetX(_x + x), GetY(_y - y));
                 PutPixel(GetX(_x - x), GetY(_y - y));
                 PutPixel(GetX(_x - x), GetY(_y + y));
-                PutPixel(GetX(_y + y), GetY(_x + x));
-                PutPixel(GetX(_y - y), GetY(_x + x));
-                PutPixel(GetX(_y - y), GetY(_x - x));
-                PutPixel(GetX(_y + y), GetY(_x - x));
+                PutPixel(GetX(_y + x), GetY(_x + y));
+                PutPixel(GetX(_y - x), GetY(_x + y));
+                PutPixel(GetX(_y - x), GetY(_x - y));
+                PutPixel(GetX(_y + x), GetY(_x - y));
 
                 gap = 2 * (delta + y) - 1;
                 if (delta < 0 && gap <= 0)
