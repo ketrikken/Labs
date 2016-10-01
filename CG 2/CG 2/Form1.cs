@@ -105,6 +105,7 @@ namespace CG_2
             int x = -radius, y = 0, gap = 0, delta = (2 - 2 * radius);
             while (x <= 0 && x <= y)
             {
+<<<<<<< HEAD
                 PutPixel(GetX(_x + x), GetY(_y + y));
                 PutPixel(GetX(_x + x), GetY(_y - y));
                 PutPixel(GetX(_x - x), GetY(_y - y));
@@ -113,6 +114,16 @@ namespace CG_2
                 PutPixel(GetX(_y - x), GetY(_x + y));
                 PutPixel(GetX(_y - x), GetY(_x - y));
                 PutPixel(GetX(_y + x), GetY(_x - y));
+=======
+                PutPixel(GetX(x + _x), GetY(y + _y));
+                PutPixel(GetX(x + _x), GetY(-y + _y));
+                PutPixel(GetX(-x + _x), GetY(-y + _y));
+                PutPixel(GetX(-x + _x), GetY(y + _y));
+                PutPixel(GetX(y + _x), GetY(x + _y));
+                PutPixel(GetX(-y + _x), GetY(x + _y));
+                PutPixel(GetX(-y + _x), GetY(-x + _y));
+                PutPixel(GetX(y + _x), GetY(-x + _y));
+>>>>>>> 89afbcc7849207e550a89b1e02c6547b5358121c
 
                 gap = 2 * (delta + y) - 1;
                 if (delta < 0 && gap <= 0)
