@@ -34,7 +34,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.Pointer_X = new System.Windows.Forms.TextBox();
             this.Pointer_Y = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.ans_line = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,21 +86,22 @@
             this.Pointer_Y.Size = new System.Drawing.Size(36, 20);
             this.Pointer_Y.TabIndex = 5;
             // 
-            // label2
+            // ans_line
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(370, 391);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Координаты ";
+            this.ans_line.AutoSize = true;
+            this.ans_line.Location = new System.Drawing.Point(370, 391);
+            this.ans_line.Name = "ans_line";
+            this.ans_line.Size = new System.Drawing.Size(72, 13);
+            this.ans_line.TabIndex = 6;
+            this.ans_line.Text = "Координаты ";
+            this.ans_line.Click += new System.EventHandler(this.label2_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(971, 444);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.ans_line);
             this.Controls.Add(this.Pointer_Y);
             this.Controls.Add(this.Pointer_X);
             this.Controls.Add(this.textBox1);
@@ -123,7 +124,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox Pointer_X;
         private System.Windows.Forms.TextBox Pointer_Y;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label ans_line;
     }
 }
 
