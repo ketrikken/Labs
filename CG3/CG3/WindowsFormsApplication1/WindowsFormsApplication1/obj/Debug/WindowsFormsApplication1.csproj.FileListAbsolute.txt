@@ -28,3 +28,12 @@ C:\Users\1\hello\Labs\CG3\CG3\WindowsFormsApplication1\WindowsFormsApplication1\
 C:\Users\1\hello\Labs\CG3\CG3\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
 C:\Users\1\hello\Labs\CG3\CG3\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
 C:\Users\1\hello\Labs\CG3\CG3\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+C:\Users\Алатиэль\Desktop\cg\Labs\CG3\CG3\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\Алатиэль\Desktop\cg\Labs\CG3\CG3\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\Алатиэль\Desktop\cg\Labs\CG3\CG3\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\Алатиэль\Desktop\cg\Labs\CG3\CG3\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\Алатиэль\Desktop\cg\Labs\CG3\CG3\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\Алатиэль\Desktop\cg\Labs\CG3\CG3\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+C:\Users\Алатиэль\Desktop\cg\Labs\CG3\CG3\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\Алатиэль\Desktop\cg\Labs\CG3\CG3\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\Алатиэль\Desktop\cg\Labs\CG3\CG3\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
