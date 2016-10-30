@@ -23,7 +23,7 @@ namespace CG4
         List<Point> TemplatePolygon = new List<Point>(0);
         private void InitPolygon()//пока кривая инициализация
         {
-            System.IO.StreamReader file = new System.IO.StreamReader(@"C: \Users\1\Desktop\CG4\CG4\Template.txt");
+            System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Users\1\hello\Labs\CG4\CG4\Template.txt");
             int countTops = int.Parse(file.ReadLine());
             for ( int i=0;i<countTops;++i)
             {
@@ -74,18 +74,7 @@ namespace CG4
                     gr.DrawLine(p, Polygon[i], Polygon[i + 1]);
             }
         }
-        private void DrawPoll()
-        {
-            for (int i = 0; i < Poll.Count(); ++i)
-            {
-                if (i == (Poll.Count() - 1))
-                {
-                    gr.DrawLine(p, Poll[i], Poll[0]);
-                }
-                else
-                    gr.DrawLine(p, Poll[i], Poll[i + 1]);
-            }
-        }
+        
         private int GetDeterminant(Point[] param)//получить определитель матрицы 3 на 3 
         {
             int[,] matrix = new int[3, 3];
@@ -121,7 +110,7 @@ namespace CG4
             }
          
 
-            List<int> determArray = new List<int>(0);//вектор определителей для каждой вершины относительно прямой
+            List<long> determArray = new List<long>(0);//вектор определителей для каждой вершины относительно прямой
             for (int i=0;i<Polygon.Count;++i)
             {
                 Point[] set_param = new Point[3] { Polygon[i], L1, L2 };
@@ -131,7 +120,7 @@ namespace CG4
             int countZDeterm = 0;
             bool ChangeSign =false;
             List<Point> ZeroDetermPoint = new List<Point>(0);
-            int sign = determArray[0];
+            
             for (int i=0;i<determArray.Count;++i)
             {
                 if (determArray[i] == 0)
@@ -141,7 +130,7 @@ namespace CG4
                 }
                 else
                 {
-                    if (sign * determArray[i] < 0)
+                    if (determArray[0] * determArray[i] < 0)
                     {
                         ChangeSign = true;
                         break;
@@ -196,7 +185,7 @@ namespace CG4
                     {
                         next = 0;
                     }
-                    int d = determArray[i] * determArray[next];
+                    long d = determArray[i] * determArray[next];
                     if ((determArray[i] * determArray[next]) < 0)
                     {
                         Point IP = GetIntersectionPoint(Polygon[i], Polygon[next], L1, L2);
@@ -374,7 +363,7 @@ namespace CG4
                 gr = pictureBox1.CreateGraphics();
                 fon = new SolidBrush(Color.Black);
                 gr.FillRectangle(fon, 0, 0, pictureBox1.Width, pictureBox1.Height);
-                DrawPoll();
+                DrawPolygon(Poll);
             }
         }
 
@@ -401,8 +390,8 @@ namespace CG4
             gr.FillRectangle(fon, 0, 0, pictureBox1.Width, pictureBox1.Height);
             AllEntered = false;
             countPointForLine = 0;
-            DrawPoll();
-            
+            DrawPolygon(Poll);
+
         }
     }
 }
