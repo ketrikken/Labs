@@ -62,6 +62,12 @@ namespace CG4
             TemplateLine[1].X = 90;
             TemplateLine[1].Y = 20;
         }
+        void swap(Point a,Point b)
+        {
+            Point buf = a;
+            a = b;
+            b = buf;
+        }
         private void DrawPolygon(List<Point> Polygon)
         {
             for (int i = 0; i < Polygon.Count; ++i)
@@ -101,7 +107,7 @@ namespace CG4
         }
         public void DrawAmputationLine(Pen p, Point L1, Point L2, List<Point> Polygon)
         {
-
+            /*
             if (L1.X > L2.X)
             {
                 Point buf = L1;
@@ -109,7 +115,7 @@ namespace CG4
                 L2 = buf;
             }
          
-
+    */
             List<long> determArray = new List<long>(0);//вектор определителей для каждой вершины относительно прямой
             for (int i=0;i<Polygon.Count;++i)
             {
@@ -288,7 +294,18 @@ namespace CG4
                     }
 
                 }
-
+               
+                for(int j=1;j<IntersectionPointArray.Count;++j)
+                {
+                    Point key = IntersectionPointArray[j];
+                    int i = j - 1;
+                    while((i>=0)&&((IntersectionPointArray[i].X>key.X) || (IntersectionPointArray[i].X == key.X && IntersectionPointArray[i].Y > key.Y)))
+                    {
+                        IntersectionPointArray[i + 1] = IntersectionPointArray[i];
+                        --i;
+                    }
+                    IntersectionPointArray[i + 1] = key;
+                }
                 for (int i = 0; i < IntersectionPointArray.Count - 1; i += 2)
                 {
                     gr.DrawLine(p, IntersectionPointArray[i], IntersectionPointArray[i + 1]);
