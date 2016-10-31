@@ -17,13 +17,14 @@ namespace CG4
     //    Mouse m = new Mouse;
         Pen p = new Pen(Color.Lime);
         Pen ps = new Pen(Color.Aqua);
+        Pen p12 = new Pen(Color.DarkRed);
         SolidBrush fon;
        // Point[] Polygon = new Point[7];//многоугольник
         Point[] TemplateLine = new Point[2];//прямая
         List<Point> TemplatePolygon = new List<Point>(0);
         private void InitPolygon()//пока кривая инициализация
         {
-            System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Users\1\hello\Labs\CG4\CG4\Template.txt");
+            System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Users\Алатиэль\Desktop\Новая папка\Labs\CG4\CG4\Template.txt");
             int countTops = int.Parse(file.ReadLine());
             for ( int i=0;i<countTops;++i)
             {
@@ -34,33 +35,11 @@ namespace CG4
                 TemplatePolygon.Add(p);
 
             }
-            /*
-            Polygon[0].X = 50;
-            Polygon[0].Y = 30;
+            TemplateLine[0].X = 7;
+            TemplateLine[0].Y = 50;
 
-            Polygon[1].X = 40;
-            Polygon[1].Y = 70;
-
-            Polygon[2].X = 70;
-            Polygon[2].Y = 50;
-
-            Polygon[3].X = 90;
-            Polygon[3].Y = 100;
-
-            Polygon[4].X = 100;
-            Polygon[4].Y = 60;
-
-            Polygon[5].X = 150;
-            Polygon[5].Y = 90;
-
-            Polygon[6].X = 110;
-            Polygon[6].Y = 30;
-            */
-            TemplateLine[0].X = 40;
-            TemplateLine[0].Y = 20;
-
-            TemplateLine[1].X = 90;
-            TemplateLine[1].Y = 20;
+            TemplateLine[1].X = 30;
+            TemplateLine[1].Y = 40;
         }
         void swap(Point a,Point b)
         {
@@ -196,7 +175,7 @@ namespace CG4
                     {
                         Point IP = GetIntersectionPoint(Polygon[i], Polygon[next], L1, L2);
                         Point IPadd = new Point(0,0);
-                        if ( L1.Y > L2.Y)
+                        if ( L1.X > L2.X)
                         {
                             Point buf = L1;
                             L1 = L2;
@@ -220,6 +199,12 @@ namespace CG4
                                 IPadd.X = IP.X;
                                 
                             }
+                        }
+                        if (L1.Y > L2.Y)
+                        {
+                            Point buf = L1;
+                            L1 = L2;
+                            L2 = buf;
                         }
                         if (IP.Y < L1.Y)
                         {
@@ -330,7 +315,7 @@ namespace CG4
                 fon = new SolidBrush(Color.Black);
                 gr.FillRectangle(fon, 0, 0, pictureBox1.Width, pictureBox1.Height);
                 DrawPolygon(TemplatePolygon);
-                DrawAmputationLine(p, TemplateLine[0], TemplateLine[1],TemplatePolygon);
+                DrawAmputationLine(p12, TemplateLine[0], TemplateLine[1],TemplatePolygon);
             }
         }
        
@@ -364,7 +349,7 @@ namespace CG4
                     {
                         InLineFlag = false;
                        // gr.DrawLine(p, nLine[0], nLine[1]);
-                        DrawAmputationLine(p, nLine[0], nLine[1], Poll);
+                        DrawAmputationLine(p12, nLine[0], nLine[1], Poll);
                         AllEntered = true;
 
                     }

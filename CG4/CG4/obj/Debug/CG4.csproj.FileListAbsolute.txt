@@ -16,3 +16,12 @@ C:\Users\1\hello\Labs\CG4\CG4\obj\Debug\CG4.Properties.Resources.resources
 C:\Users\1\hello\Labs\CG4\CG4\obj\Debug\CG4.csproj.GenerateResource.Cache
 C:\Users\1\hello\Labs\CG4\CG4\bin\Debug\CG4.exe
 C:\Users\1\hello\Labs\CG4\CG4\bin\Debug\CG4.pdb
+C:\Users\Алатиэль\Desktop\Новая папка\Labs\CG4\CG4\bin\Debug\CG4.exe.config
+C:\Users\Алатиэль\Desktop\Новая папка\Labs\CG4\CG4\obj\Debug\CG4.exe
+C:\Users\Алатиэль\Desktop\Новая папка\Labs\CG4\CG4\obj\Debug\CG4.pdb
+C:\Users\Алатиэль\Desktop\Новая папка\Labs\CG4\CG4\bin\Debug\CG4.exe
+C:\Users\Алатиэль\Desktop\Новая папка\Labs\CG4\CG4\bin\Debug\CG4.pdb
+C:\Users\Алатиэль\Desktop\Новая папка\Labs\CG4\CG4\obj\Debug\CG4.csprojResolveAssemblyReference.cache
+C:\Users\Алатиэль\Desktop\Новая папка\Labs\CG4\CG4\obj\Debug\CG4.Form1.resources
+C:\Users\Алатиэль\Desktop\Новая папка\Labs\CG4\CG4\obj\Debug\CG4.Properties.Resources.resources
+C:\Users\Алатиэль\Desktop\Новая папка\Labs\CG4\CG4\obj\Debug\CG4.csproj.GenerateResource.Cache
