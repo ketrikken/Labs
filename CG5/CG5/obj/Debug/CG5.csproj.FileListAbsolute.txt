@@ -1,0 +1,9 @@
+C:\Users\1\Desktop\CG5\CG5\bin\Debug\CG5.exe.config
+C:\Users\1\Desktop\CG5\CG5\obj\Debug\CG5.csprojResolveAssemblyReference.cache
+C:\Users\1\Desktop\CG5\CG5\obj\Debug\CG5.Form1.resources
+C:\Users\1\Desktop\CG5\CG5\obj\Debug\CG5.Properties.Resources.resources
+C:\Users\1\Desktop\CG5\CG5\obj\Debug\CG5.csproj.GenerateResource.Cache
+C:\Users\1\Desktop\CG5\CG5\bin\Debug\CG5.exe
+C:\Users\1\Desktop\CG5\CG5\bin\Debug\CG5.pdb
+C:\Users\1\Desktop\CG5\CG5\obj\Debug\CG5.exe
+C:\Users\1\Desktop\CG5\CG5\obj\Debug\CG5.pdb
