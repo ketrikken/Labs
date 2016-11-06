@@ -19,10 +19,17 @@ namespace CG5
 
         public struct TopPoint
         {
-            public TopPoint(Point cr) { coor = cr;  IntersectionPoints = new List<Point>(0); }
+            public TopPoint(Point cr) { coor = cr;  IntersectionPoints = new List<Point>(0); IntersectMainTop = new List<int>(0); }
             public Point coor;
             public List<Point> IntersectionPoints;
+            public List<int> IntersectMainTop;
         }
+       /* public struct IntersctPoint
+        {
+            public IntersctPoint(Point cr) { coor = cr;  mainTop = -1; }
+            public Point coor;
+            public int mainTop;
+        }*/
         List<TopPoint> MainPolygon = new List<TopPoint>(0);
         List<TopPoint> InterceptPolygon = new List<TopPoint>(0);
 
@@ -53,9 +60,9 @@ namespace CG5
             ret.Y = -((A1 * C2 - A2 * C1) / (A1 * B2 - A2 * B1));
             return ret;
         }
-        public void GetAmputationLine( TopPoint L1, TopPoint L2, List<TopPoint> Polygon)
+        public void GetAmputationLine( TopPoint L1, TopPoint L2, List<TopPoint> Polygon,int z)
         {
-          
+            bool swapDetector = false;
             List<long> determArray = new List<long>(0);//вектор определителей для каждой вершины относительно прямой
             for (int i = 0; i < Polygon.Count; ++i)
             {
@@ -144,6 +151,7 @@ namespace CG5
                             Point buf = L1.coor;
                             L1 = L2;
                             L2.coor = buf;
+                            swapDetector = true;
                         }
                         if (IP.X < L1.coor.X)
                         {
@@ -169,6 +177,7 @@ namespace CG5
                             Point buf = L1.coor;
                             L1 = L2;
                             L2.coor = buf;
+                            swapDetector = true;
                         }
                         if (IP.Y < L1.coor.Y)
                         {
@@ -189,8 +198,15 @@ namespace CG5
                             }
                         }
                         IntersectionPointArray.Add(IPadd);
-                        Polygon[i].IntersectionPoints.Add(IPadd);
-                        L1.IntersectionPoints.Add(IPadd);
+                        //Polygon[i].IntersectionPoints.Add(IPadd);
+                        InterceptPolygon[z].IntersectionPoints.Add(IPadd);
+                        if (IPadd != L1.coor && IPadd != L2.coor)
+                        {
+                            InterceptPolygon[z].IntersectMainTop.Add(i);
+                        }
+                        else
+                            InterceptPolygon[z].IntersectMainTop.Add(-1);
+                            
                         //gr.DrawRectangle(InterseptPolygonBrush, IPadd.X, IPadd.Y, 1, 1);
                     }
                     if (determArray[i] == 0)
@@ -242,8 +258,8 @@ namespace CG5
                         }
 
                         IntersectionPointArray.Add(IPadd);
-                        Polygon[i].IntersectionPoints.Add(IPadd);
-                        L1.IntersectionPoints.Add(IPadd);
+                       /* Polygon[i].IntersectionPoints.Add(IPadd);
+                        L1.IntersectionPoints.Add(IPadd);*/
                         //gr.DrawRectangle(InterseptPolygonBrush, IPadd.X, IPadd.Y, 1, 1);
                     }
 
@@ -260,6 +276,7 @@ namespace CG5
                     }
                     IntersectionPointArray[i + 1] = key;
                 }
+                //
                 for (int i = 0; i < IntersectionPointArray.Count - 1; i += 2)
                 {
                     gr.DrawLine(InterseptPolygonBrush, IntersectionPointArray[i], IntersectionPointArray[i + 1]);
@@ -274,7 +291,7 @@ namespace CG5
                 int next = i + 1;
                 if (next == InterceptPolygon.Count)
                     next = 0;
-                GetAmputationLine(InterceptPolygon[i], InterceptPolygon[next], MainPolygon);
+                GetAmputationLine(InterceptPolygon[i], InterceptPolygon[next], MainPolygon,i);
             }
         }
 
@@ -292,6 +309,19 @@ namespace CG5
             }
         }
 
+       /* List<List<Point>> InPoll = new List<List<Point>>(0);
+        void Obhod()
+        {
+            List<Point> pol = new List<Point>(0);
+            
+            Point next = new Point(-1, -1);
+            Point start = InterceptPolygon[0].IntersectionPoints[0];
+
+            while (next!= start)
+            {
+
+            }
+        }*/
         public Form1()
         {
             InitializeComponent();
