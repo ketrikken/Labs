@@ -35,7 +35,6 @@ namespace CG5
         public struct IntersectPoint
         {
             public IntersectPoint(Point cr, int own,int main) { coor = cr; Owner = own; Mainer = main; chek = false; }
-            public void Cheked() { chek = true; }
             public Point coor;
             public int Owner;
             public int Mainer;
@@ -353,26 +352,23 @@ namespace CG5
                 return MinID;
             return LP[idTP].IntersectMainTop[MinID];
         }
-        List<int> Checked = new List<int>(0);
-        void Obhod(int StartID)
+       
+        void Obhod()
         {
-
             List<Point> pol = new List<Point>(0);
             bool InMode = true;
-            int iPoints = GetNearestPoint(InterceptPolygon,StartID,InterceptPolygon[StartID].coor);
+            int iPoints = GetNearestPoint(InterceptPolygon,0,InterceptPolygon[0].coor);
             Point p = Points[iPoints].coor;
-            Checked.Add(iPoints);
-            Point start = p;
-            int idEdge = StartID;
-            pol.Add(p);
 
+            Point start = p;
+            int idEdge = 0;
+            pol.Add(p);
             while (true)
             {
                 if (InMode)
                 {
                     iPoints = GetNearestPoint(InterceptPolygon, idEdge, p);
                     pol.Add(Points[iPoints].coor);
-                    Checked.Add(iPoints);
                     p = Points[iPoints].coor;
                     if (Points[iPoints].Mainer > -1)
                     {
@@ -411,7 +407,6 @@ namespace CG5
                     {
                         p = Points[iPoints].coor;
                         idEdge = Points[iPoints].Owner;
-                        Checked.Add(iPoints);
                         pol.Add(p);
                         InMode = true;
                     }
@@ -431,7 +426,6 @@ namespace CG5
                 else
                     gr.DrawLine(pen, pol[i], pol[i + 1]);
             }
-
         }
         public Form1()
         {
@@ -510,19 +504,7 @@ namespace CG5
 
         private void button5_Click(object sender, EventArgs e)
         {
-            /* for (int k = 0; k < Points.Count;++k)
-             {
-
-                 int max = -1;
-                 for (int j = 0; j < Checked.Count; ++j)
-                 {
-                     if (Checked[j] > max) max = Checked[j];
-                 }
-                 if (max < k) Obhod(Points[k].Owner);
-             }
-           */
-            Obhod(0);
-            Obhod(5);
+            Obhod();
         }
     }
 
