@@ -354,6 +354,7 @@ namespace CG5
             return LP[idTP].IntersectMainTop[MinID];
         }
         List<int> Checked = new List<int>(0);
+        int LastID = 0;
         void Obhod(int StartID)
         {
 
@@ -378,6 +379,7 @@ namespace CG5
                     {
                         InMode = false;
                         idEdge = Points[iPoints].Mainer;
+                        LastID = iPoints;
                     }
                     else
                     {
@@ -521,8 +523,21 @@ namespace CG5
                  if (max < k) Obhod(Points[k].Owner);
              }
            */
-            Obhod(0);
-            Obhod(5);
+            while (true)
+            {
+                //Obhod(0);
+                bool flag = true;
+                for (int i= LastID + 1;i < Points.Count;++i)
+                {
+                    if ( Points[i].Mainer > -1)
+                    {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (!flag)
+                Obhod(Points[LastID+1].Owner);
+            }
         }
     }
 
