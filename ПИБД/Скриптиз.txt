@@ -1,0 +1,56 @@
+--1
+SELECT Notice_ID,Vehicle_ID,CreateData FROM Notice WHERE Notice_ID BETWEEN 2 AND 900000 ORDER BY CreateData;
+SELECT Notice_ID,Vehicle_ID,CreateData FROM NoticeCopy WHERE Notice_ID BETWEEN 2 AND 900000 ORDER BY CreateData;
+--4
+SELECT	tabl.name AS 'TableName' ,
+		indexs.name AS 'IndexName',
+		avg_fragmentation_in_percent AS 'PercentOfFragmentaion'
+	FROM sys.dm_db_index_physical_stats(DB_ID(N'BD'),
+	OBJECT_ID(N'all'),NULL,NULL,NULL) AS a 
+	JOIN sys.indexes AS indexs ON a.object_id = indexs.object_id AND a.index_id = indexs.index_id
+	JOIN sys.tables AS tabl ON tabl.object_id = a.object_id
+	ORDER BY avg_fragmentation_in_percent DESC;
+GO
+ALTER INDEX PriceInd ON Notice REBUILD;
+ALTER INDEX XPKComments ON Comments REBUILD;
+GO
+ALTER INDEX XPKComments ON Comments REORGANIZE;
+GO
+--5
+SELECT * FROM sys.dm_fts_active_catalogs
+SELECT cpu_count,physical_memory_kb,virtual_memory_kb FROM sys.dm_os_sys_info
+
+SELECT * FROM sys.dm_clr_properties
+
+SELECT * FROM sys.dm_db_log_space_usage
+SELECT servicename, status_desc FROM sys.dm_server_services
+
+--6
+SELECT CreateData,Price FROM NoticeCopy  ORDER BY CreateData;
+SELECT * FROM NoticeCopy  ORDER BY CreateData;
+
+CREATE CLUSTERED INDEX CLNCopy ON NoticeCopy(Notice_ID);
+
+CREATE UNIQUE INDEX nonclindPRICECD ON NoticeCopy ( CreateData DESC, Price DESC, Notice_ID ASC);
+--7
+SELECT * INTO NewCommentsCopy FROM Comments;
+
+SELECT * FROM NewCommentsCopy;
+
+ALTER TABLE NewCommentsCopy
+ALTER COLuMN Text XML;
+
+
+
+
+ALTER TABLE NewCommentsCopy
+ADD CONSTRAINT PK PRIMARY KEY CLUSTERED (Comments_ID);  
+CREATE PRIMARY XML INDEX PrimarXMLInd ON NewCommentsCopy (Text);
+
+CREATE XML INDEX PropertiesIndex ON NewCommentsCopy (Text)
+USING XML INDEX PrimarXMLInd FOR PROPERTY;
+
+
+SELECT Comments_ID AS 'ID', Text.value ('(/)[1]', 'varchar(30)') FROM NewCommentsCopy;
+
+GO
