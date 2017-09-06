@@ -43,7 +43,9 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            byte[] message = Encoding.ASCII.GetBytes("{(FRX=0.1)(FRY=1.004)}");
+            client.BeginSend(message, 0, message.Length, SocketFlags.None,
+                         new AsyncCallback(SendData), client);
             //GetDATA();
         }
 
@@ -106,6 +108,15 @@ namespace WindowsFormsApplication1
             }
             
         }
+
+        void SendData(IAsyncResult iar)
+        {
+            Socket remote = (Socket)iar.AsyncState;
+            int sent = remote.EndSend(iar);
+            remote.BeginReceive(data, 0, size, SocketFlags.None,
+                          new AsyncCallback(ReceiveData), remote);
+        }
+
         private void Parse(String inputString)
         {
             List<String> stringList = new List<string>();
@@ -143,6 +154,11 @@ namespace WindowsFormsApplication1
         {
             flagClose = true;
             client.Close();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

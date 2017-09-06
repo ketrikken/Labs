@@ -7,3 +7,12 @@ c:\users\алатиэль\documents\visual studio 2015\Projects\WindowsFormsAppl
 c:\users\алатиэль\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 c:\users\алатиэль\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
 C:\Users\Алатиэль\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+E:\системы рв\первая лаба\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+E:\системы рв\первая лаба\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+E:\системы рв\первая лаба\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+E:\системы рв\первая лаба\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+E:\системы рв\первая лаба\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+E:\системы рв\первая лаба\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+E:\системы рв\первая лаба\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+E:\системы рв\первая лаба\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+E:\системы рв\первая лаба\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
