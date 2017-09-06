@@ -75,6 +75,7 @@
             this.textBox48 = new System.Windows.Forms.TextBox();
             this.textBox49 = new System.Windows.Forms.TextBox();
             this.btnStart = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -437,11 +438,22 @@
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.button2_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(124, 324);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 47;
+            this.button2.Text = "Стоп";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(814, 521);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.textBox38);
             this.Controls.Add(this.textBox39);
@@ -546,6 +558,7 @@
         private System.Windows.Forms.TextBox textBox48;
         private System.Windows.Forms.TextBox textBox49;
         private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Button button2;
     }
 }
 
