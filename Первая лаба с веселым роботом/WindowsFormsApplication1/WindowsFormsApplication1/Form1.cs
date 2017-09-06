@@ -21,20 +21,58 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
+
+        //рисовалка
+        Graphics gr;
+        Pen penLines = new Pen(Color.Black);
+        Pen penPoints = new Pen(Color.PaleVioletRed);
+        SolidBrush fon;
+        int x = 530, y = 530;
+
+
+
+
+        ///////////////////////////////////////////
+
+        public void TipoAlgoritm() // запускаем при старте
+        {
+            RefreashPicture();
+
+
+            PutAim(20, 50);
+
+
+
+        }
+
+        public void RefreashPicture()
+        {
+            fon = new SolidBrush(Color.LightGoldenrodYellow);
+            gr.FillRectangle(fon, 0, 0, pictureBox1.Width, pictureBox1.Height);
+
+            gr.DrawLine(penLines, x / 2, 0, x / 2, y);
+            gr.DrawLine(penLines, 0, y / 2, x, y / 2);
+        }
+
+        private void PutAim(int x, int y)// для отмечания точек
+        {
+            gr.FillRectangle(Brushes.PaleVioletRed, x, y, 5, 5);
+        }
+
         bool flagClose = false;
         private byte[] data = new byte[1024];
         private int size = 1024;
         private Socket client;
         TextBox[] textBoxes;
 
-        //System.Net.Sockets.TcpClient clientSocket = new System.Net.Sockets.TcpClient();
-       // NetworkStream serverStream = default(NetworkStream);
-        //string readData = null;
+     
 
         public Form1()
         {
             InitializeComponent();
             textBoxes = new[] { textBox3, textBox4, textBox8, textBox6, textBox16, textBox14, textBox12, textBox10, textBox32, textBox30, textBox28, textBox26, textBox24, textBox22, textBox20, textBox18, textBox48 };
+            gr = pictureBox1.CreateGraphics();
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -46,39 +84,17 @@ namespace WindowsFormsApplication1
             byte[] message = Encoding.ASCII.GetBytes("{(FRX=0.1)(FRY=1.004)}");
             client.BeginSend(message, 0, message.Length, SocketFlags.None,
                          new AsyncCallback(SendData), client);
-            //GetDATA();
         }
 
-        //private void GetDATA()
-        //{
-        //    serverStream = clientSocket.GetStream();
-        //    Byte[] data = new Byte[256];
-        //    String responseData = String.Empty;
-        //    Int32 bytes = serverStream.Read(data, 0, data.Length);
-        //    responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
-        //    textBox1.Text += "     " + responseData;
-        //    Parse(responseData);
-        //}
-
-        //private void msg()
-        //{
-        //    if (this.InvokeRequired)
-        //        this.Invoke(new MethodInvoker(msg));
-        //    else { }
-        //        //textBox1.Text = readData;
-        //}
-
-
-
-        private void button2_Click(object sender, EventArgs e)
+    
+        private void button2_Click(object sender, EventArgs e)// кнопка старт
         {
-            // clientSocket.Connect("127.0.0.1", 9999);
-            // serverStream = clientSocket.GetStream();
             flagClose = false;
             Socket newsock = new Socket(AddressFamily.InterNetwork,
                             SocketType.Stream, ProtocolType.Tcp);
             IPEndPoint iep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9999);
             newsock.BeginConnect(iep, new AsyncCallback(Connected), newsock);
+            TipoAlgoritm();
         }
         void Connected(IAsyncResult iar)
         {
