@@ -1,47 +1,58 @@
 package com.example.laba1_2;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import org.htmlcleaner.CleanerProperties;
-import org.htmlcleaner.HtmlCleaner;
-import org.htmlcleaner.TagNode;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class ParseActivity extends ActionBarActivity {
 
-    Button btnFillIn;
-    TextView textView;
+    Button btnFillIn, btnAddInBD;
     private ListView lv;
     private ArrayAdapter<String> adapter;
     public ArrayList<String> titleList = new ArrayList<String>();
+    private Database1 database;
 
     private ProgressDialog pd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parse);
+
+        database = new Database1(this);
+        database.open();
+
+        btnAddInBD = (Button) findViewById(R.id.buttonAddInBD);
+        btnAddInBD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (titleList != null){
+                    database.delFromTheme();
+                    for (String it : titleList){
+                        database.addRecTheme(it);
+                    }
+                    Toast.makeText(ParseActivity.this, "добавлено " + titleList.size() + " записей", Toast.LENGTH_SHORT).show();
+                    database.PrintAllTheme();
+                }
+
+            }
+        });
+
 
         btnFillIn = (Button) findViewById(R.id.buttonParse);
         btnFillIn.setOnClickListener(new View.OnClickListener() {
@@ -52,15 +63,25 @@ public class ParseActivity extends ActionBarActivity {
             }
         });
         lv = (ListView) findViewById(R.id.listView1);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(view.getContext(), OpenPage.class);
+                intent.putExtra("ssel", "https://www.buzzfeed.com/expresident/best-cat-pictures?utm_term=.cg5kBV8Qr#.rx0K9nXRv");
+                startActivity(intent);
+            }
+        });
         // Добавляем данные для ListView
         adapter = new ArrayAdapter<String>(this, R.layout.list_item, R.id.product_name, titleList);
 
         //textView = (TextView)findViewById(R.id.textView1);
 
-
     }
 
-
+    protected void onDestroy() {
+        super.onDestroy();
+        database.close();
+    }
     class MyTask extends AsyncTask<Void, Void, Void> {
 
         String title;//Тут храним значение заголовка сайта
@@ -72,24 +93,18 @@ public class ParseActivity extends ActionBarActivity {
 
             try {
                 //Считываем заглавную страницу http://harrix.org
-                doc = Jsoup.connect("http://blog.harrix.org/").get();
-                Elements links = doc.select("a[href]");
+                doc = Jsoup.connect("https://www.buzzfeed.com/expresident/best-cat-pictures?utm_term=.cg5kBV8Qr#.rx0K9nXRv").get();
+                Elements links = doc.select("span.js-subbuzz__title-text");//h2.entry-title
                 titleList.clear();
-                for (Element link : links)
-                {
+
+                for (Element link : links) {
                     titleList.add(link.text());
                 }
+
             } catch (IOException e) {
                 //Если не получилось считать
-
                 e.printStackTrace();
             }
-
-            //Если всё считалось, что вытаскиваем из считанного html документа заголовок
-          /*  if (doc != null)
-                title = doc.title();
-            else
-                title = "Ошибка";*/
 
             return null;
         }
