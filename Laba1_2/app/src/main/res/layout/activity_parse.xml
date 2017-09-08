@@ -16,20 +16,20 @@
             android:text="Получить данные">
         </Button>
 
-        <TextView
+        <!--<TextView
             android:id="@+id/textView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="TextView" />-->
 
 
-        <!--<ListView
+        <ListView
             android:id="@+id/listView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true" >
-        </ListView>-->
+        </ListView>
 
         <!-- <ListView android:id="@+id/listViewData"
              android:layout_height="wrap_content"

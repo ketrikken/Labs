@@ -34,7 +34,8 @@ public class ParseActivity extends ActionBarActivity {
     Button btnFillIn;
     TextView textView;
     private ListView lv;
-
+    private ArrayAdapter<String> adapter;
+    public ArrayList<String> titleList = new ArrayList<String>();
 
     private ProgressDialog pd;
     @Override
@@ -50,8 +51,11 @@ public class ParseActivity extends ActionBarActivity {
                 mt.execute();
             }
         });
-        //lv = (ListView) findViewById(R.id.listView1);
-        textView = (TextView)findViewById(R.id.textView1);
+        lv = (ListView) findViewById(R.id.listView1);
+        // Добавляем данные для ListView
+        adapter = new ArrayAdapter<String>(this, R.layout.list_item, R.id.product_name, titleList);
+
+        //textView = (TextView)findViewById(R.id.textView1);
 
 
     }
@@ -69,18 +73,23 @@ public class ParseActivity extends ActionBarActivity {
             try {
                 //Считываем заглавную страницу http://harrix.org
                 doc = Jsoup.connect("http://blog.harrix.org/").get();
-                Log.d("mLog", "exeption good");
+                Elements links = doc.select("a[href]");
+                titleList.clear();
+                for (Element link : links)
+                {
+                    titleList.add(link.text());
+                }
             } catch (IOException e) {
                 //Если не получилось считать
-                Log.d("mLog", "exeption " + e);
+
                 e.printStackTrace();
             }
 
             //Если всё считалось, что вытаскиваем из считанного html документа заголовок
-            if (doc != null)
+          /*  if (doc != null)
                 title = doc.title();
             else
-                title = "Ошибка";
+                title = "Ошибка";*/
 
             return null;
         }
@@ -88,8 +97,8 @@ public class ParseActivity extends ActionBarActivity {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-
-            textView.setText(title);
+            lv.setAdapter(adapter);
+            //textView.setText(title);
         }
     }
 
