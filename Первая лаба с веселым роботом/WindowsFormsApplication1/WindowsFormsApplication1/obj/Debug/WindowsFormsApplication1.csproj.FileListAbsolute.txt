@@ -16,3 +16,12 @@ E:\системы рв\первая лаба\Labs\Первая лаба с ве�
 E:\системы рв\первая лаба\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
 E:\системы рв\первая лаба\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
 E:\системы рв\первая лаба\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+C:\Users\1\Desktop\SRT\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\1\Desktop\SRT\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\1\Desktop\SRT\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\1\Desktop\SRT\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\1\Desktop\SRT\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\1\Desktop\SRT\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+C:\Users\1\Desktop\SRT\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\1\Desktop\SRT\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\1\Desktop\SRT\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
