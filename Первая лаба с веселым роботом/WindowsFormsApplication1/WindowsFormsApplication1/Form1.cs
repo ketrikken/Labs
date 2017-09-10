@@ -42,11 +42,11 @@ namespace WindowsFormsApplication1
         private void button2_Click(object sender, EventArgs e)// кнопка старт
         {
             rc = new RobotController(textBox_connectInfo, textBoxes);
-            rv = new RobotView(pictureBox1, textBoxes, textBox_connectInfo);
+            rv = new RobotView(pictureBox1, textBoxes, textBox_connectInfo, new[] { textBox_FRX, textBox_FRY });
             rc.startCallBack();
             rc.messageFromServerEvent += rv.RefreashPictureHandler; // добавление обработчика события когда пришло сообщение от сервера
             rc.changeCurrentGoalPoint += rv.setCurrentGoalPointHandler;//добавление обработчика события когда поменялась текущая целевая точка, к которой должен лететь робот
-            
+            rc.changeCurrentThrustVector += rv.setCurrentThrustVector;
         }
        
         private void textBox2_TextChanged(object sender, EventArgs e)

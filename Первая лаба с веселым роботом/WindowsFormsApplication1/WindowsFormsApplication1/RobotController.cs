@@ -38,6 +38,9 @@ namespace WindowsFormsApplication1
         //делегат и событие изменения целевой точки
         public delegate void changeGoalPoint(float x, float y);
         public event changeGoalPoint changeCurrentGoalPoint;
+        //делегат и событие изменения вектора тяги робота
+        public delegate void changeThrustVector(float x, float y);
+        public event changeThrustVector changeCurrentThrustVector;
 
         public void startCallBack()
         {
@@ -130,12 +133,13 @@ namespace WindowsFormsApplication1
             byte[] message = Encoding.ASCII.GetBytes(messageComand);
             _client.BeginSend(message, 0, message.Length, SocketFlags.None,
                          new AsyncCallback(SendData), _client);
+            changeCurrentThrustVector(frx, fry);
     }
         private void setCurrentGoalPoint()
         {
             
-            int i = Convert.ToInt32(_listOfParamTextBoxes[(int)paramInd.POINT].Text.ToString());
-            //int i = 3;
+            //int i = Convert.ToInt32(_listOfParamTextBoxes[(int)paramInd.POINT].Text.ToString());
+            int i = 4;
             switch(i)
             {
                 case 0:
@@ -185,7 +189,7 @@ namespace WindowsFormsApplication1
             double robot_Y_Pos = getParam((int)paramInd.RY);
             //sendMessage(0.1f, 1.004f);
             sendMessage((float)robot_X_Pos, (float)robot_Y_Pos);
-         
+            
         }
 
         private bool _flagClose;
