@@ -70,12 +70,12 @@ namespace WindowsFormsApplication1
             realPoint serverRobotPoint = new realPoint(getParam((int)paramInd.RX), getParam((int)paramInd.RY));
             realPoint robotPoint = convertToPixelCoor(origin, serverRobotPoint);
             double robot_R = getParam((int)paramInd.R);
-            robot_R = robot_R * (spaceWidth/2);
+            robot_R = robot_R *spaceWidth;
             _gr.DrawEllipse(_penLines, (int)(robotPoint.x - robot_R / 2), (int)(robotPoint.y - robot_R / 2), 
                 (float)robot_R, (float)robot_R);
             //_debugText.Text = ((float)robot_R).ToString();
-            viewVector(robotPoint, new realPoint(getParam((int)paramInd.VRX), getParam((int)paramInd.VRY)), new Pen(Color.Red));
-            viewVector(robotPoint,new realPoint(_currentThrustVector_X, _currnetThrustVector_Y), new Pen(Color.Green));
+            viewVector(robotPoint, new realPoint(getParam((int)paramInd.VRX), getParam((int)paramInd.VRY)), new Pen(Color.Green));
+            viewVector(robotPoint,new realPoint(_currentThrustVector_X, _currnetThrustVector_Y), new Pen(Color.Red));
         }
         private void viewCurrentGoalPoint()
         {
@@ -97,11 +97,12 @@ namespace WindowsFormsApplication1
             realPoint pixelPoint = convertToPixelCoor(origin, serverVectorPoint);
             _gr.DrawLine(pen, new Point((int)robotPoint.x, (int)robotPoint.y),
                 new Point((int)pixelPoint.x, (int)pixelPoint.y));
+            //_debugText.Text = pixelPoint.x.ToString();
         }
         private realPoint convertToPixelCoor(realPoint origin, realPoint server)
         {
-            double x = (origin.x + spaceWidth / 4 * server.x);
-            double y = (origin.y - spaceHeight / 4 * server.y);
+            double x = (origin.x + spaceWidth / 2 * server.x);
+            double y = (origin.y - spaceHeight / 2 * server.y);
             return new realPoint(x, y);
         }
 

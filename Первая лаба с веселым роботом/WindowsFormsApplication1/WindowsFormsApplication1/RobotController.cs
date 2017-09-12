@@ -17,7 +17,7 @@ namespace WindowsFormsApplication1
     public enum paramInd
     {
         T, R, M, RX, RY, VRX, VRY, TR, TX, TY, TASK,
-        POINT, FAIL, CRASH, FUEL, DONE, ERROR, IGNORED
+        POINT, FAIL, CRASH, DONE, FUEL, ERROR, IGNORED
     }
 
     public class RobotController
@@ -60,7 +60,7 @@ namespace WindowsFormsApplication1
         /// </summary>
         private void messageHandler()
         {
-            //_connectTextBox.Text = _currentGoalPoint_X.ToString();
+            
             setCurrentGoalPoint();//установка целевой точки согласно сообщения (пока только по второму заданию)
             headToCurrentPoint();//задание направления на текущую точку
         }//обработчик события прихода сообщения от сервера
@@ -137,10 +137,27 @@ namespace WindowsFormsApplication1
     }
         private void setCurrentGoalPoint()
         {
-            
-            //int i = Convert.ToInt32(_listOfParamTextBoxes[(int)paramInd.POINT].Text.ToString());
-            int i = 4;
-            switch(i)
+            int i = Convert.ToInt32(_listOfParamTextBoxes[(int)paramInd.TASK].Text.ToString());
+            switch (i)
+            {
+                case 1:
+                    _currentGoalPoint_X = 0;
+                    _currentGoalPoint_Y = 0;
+                    break;
+                case 2:
+                    setCurrentGoalPointForRouteMode();
+                    break;
+                case 3:
+                    _currentGoalPoint_X = Convert.ToInt32(_listOfParamTextBoxes[(int)paramInd.TX].Text.ToString());
+                    _currentGoalPoint_Y = Convert.ToInt32(_listOfParamTextBoxes[(int)paramInd.TY].Text.ToString());
+                    break;
+            }
+            changeCurrentGoalPoint(_currentGoalPoint_X, _currentGoalPoint_Y);
+        }
+        private void setCurrentGoalPointForRouteMode()
+        {
+            int i = Convert.ToInt32(_listOfParamTextBoxes[(int)paramInd.POINT].Text.ToString());
+            switch (i)
             {
                 case 0:
                     _currentGoalPoint_X = 0;
@@ -175,7 +192,6 @@ namespace WindowsFormsApplication1
                     _currentGoalPoint_Y = -0.8f;
                     break;
             }
-            changeCurrentGoalPoint(_currentGoalPoint_X, _currentGoalPoint_Y);
         }
         private double getParam(int i)
         {
@@ -187,10 +203,16 @@ namespace WindowsFormsApplication1
         {
             double robot_X_Pos = getParam((int)paramInd.RX);
             double robot_Y_Pos = getParam((int)paramInd.RY);
-            //sendMessage(0.1f, 1.004f);
-            sendMessage((float)robot_X_Pos, (float)robot_Y_Pos);
+            if (robot_X_Pos > 0)
+                sendMessage(0.1f,0f);
+            //sendMessage((float)robot_X_Pos, (float)robot_Y_Pos);
             
         }
+
+       
+
+
+
 
         private bool _flagClose;
         private byte[] _data = new byte[1024];
