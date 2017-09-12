@@ -24,8 +24,7 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
             textBoxes = new[] { textBox_T, textBox_R, textBox_M, textBox_RX, textBox_RY, textBox_VRX, textBox_VRY,
-                textBox_TR, textBox_TX, textBox_TY, textBox_TASK, textBox_FALL, textBox_CRASH, textBox_DONE,
-                textBox_FUEL, textBox_ERROR, textBox_IGNORED };
+                textBox_TR, textBox_TX, textBox_TY, textBox_TASK,  textBox_point, textBox_FALL, textBox_CRASH, textBox_FUEL,textBox_DONE, textBox_ERROR, textBox_IGNORED };
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -65,6 +64,11 @@ namespace WindowsFormsApplication1
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
 
         }

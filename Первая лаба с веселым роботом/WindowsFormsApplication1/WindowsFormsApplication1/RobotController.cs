@@ -31,7 +31,7 @@ namespace WindowsFormsApplication1
             _currentGoalPoint_X = 0;
             _currentGoalPoint_Y = 0;
         }
-
+        double pastDistanceForPoint = 400;
         //делегат и событие прихода сообщения от сервера
         public delegate void messageDispatcher();
         public event messageDispatcher messageFromServerEvent;
@@ -72,25 +72,30 @@ namespace WindowsFormsApplication1
             {
                 _client.EndConnect(iar);
                 _connectTextBox.Text = "Connected to: " + _client.RemoteEndPoint.ToString();
-                _client.BeginReceive(_data, 0, _size, SocketFlags.None,
-                              new AsyncCallback(ReceiveData), _client);
+                _client.BeginReceive(_data, 0, _size, SocketFlags.None, new AsyncCallback(ReceiveData), _client);
             }
             catch (SocketException)
             {
-                _connectTextBox.Text = "Error connecting";// просто что бы видеть если ошибка соединения
+                _connectTextBox.Text = "Error connecting";
             }
         }
         private void ReceiveData(IAsyncResult iar)
         {
+           
+    
             Socket remote = (Socket)iar.AsyncState;
             int recv = remote.EndReceive(iar);
             string stringData = Encoding.ASCII.GetString(_data, 0, recv);
             Parse(stringData);
+           // setCurrentGoalPoint();//установка целевой точки согласно сообщения (пока только по второму заданию)
             messageFromServerEvent();
             if (_flagClose != true)
             {
-                _client.BeginReceive(_data, 0, _size, SocketFlags.None,
-                             new AsyncCallback(ReceiveData), _client);
+                
+
+                _client.BeginReceive(_data, 0, _size, SocketFlags.None, new AsyncCallback(ReceiveData), _client);
+
+              
             }
 
         }
@@ -98,8 +103,7 @@ namespace WindowsFormsApplication1
         {
             Socket remote = (Socket)iar.AsyncState;
             int sent = remote.EndSend(iar);
-            remote.BeginReceive(_data, 0, _size, SocketFlags.None,
-                          new AsyncCallback(ReceiveData), remote);
+            remote.BeginReceive(_data, 0, _size, SocketFlags.None, new AsyncCallback(ReceiveData), remote);
         }
         private void Parse(String inputString)
         {
@@ -112,7 +116,7 @@ namespace WindowsFormsApplication1
                     stringList.Add(temp);
                     temp = String.Empty;
                 }
-                else if (Char.IsDigit(inputString[i]) || inputString[i] == '.')
+                else if (Char.IsDigit(inputString[i]) || inputString[i] == '.' || inputString[i] == '-')
                 {
                     temp += inputString[i];
                 }
@@ -191,6 +195,7 @@ namespace WindowsFormsApplication1
                     _currentGoalPoint_X = 0;
                     _currentGoalPoint_Y = -0.8f;
                     break;
+                    
             }
         }
         private double getParam(int i)
@@ -203,10 +208,15 @@ namespace WindowsFormsApplication1
         {
             double robot_X_Pos = getParam((int)paramInd.RX);
             double robot_Y_Pos = getParam((int)paramInd.RY);
-            if (robot_X_Pos > 0)
-                sendMessage(0.1f,0f);
-            //sendMessage((float)robot_X_Pos, (float)robot_Y_Pos);
-            
+
+            double distanceForPoint = Math.Sqrt(Math.Pow((robot_X_Pos - _currentGoalPoint_X), 2) + Math.Pow((robot_Y_Pos - _currentGoalPoint_Y), 2));
+
+            if (distanceForPoint >= pastDistanceForPoint)
+                sendMessage((float)(robot_X_Pos * (1) + _currentGoalPoint_X), (float)(robot_Y_Pos * (1) - _currentGoalPoint_Y));
+            else
+                sendMessage(0, 0);
+            pastDistanceForPoint = distanceForPoint;
+           
         }
 
        

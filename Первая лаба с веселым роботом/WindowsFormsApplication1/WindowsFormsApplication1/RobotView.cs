@@ -26,11 +26,11 @@ namespace WindowsFormsApplication1
         public const int spaceWidth = 534;
         public const int spaceHeight = spaceWidth;
 
-        public RobotView(PictureBox pb, TextBox[] paramTextBoxes,TextBox debugBox, TextBox[] thrustInputTextBox)
+        public RobotView(PictureBox pictureBox, TextBox[] paramTextBoxes,TextBox debugBox, TextBox[] thrustInputTextBox)
         {
-            _pb = pb;
+            _pictureBox = pictureBox;
             _listOfParamTextBoxes = paramTextBoxes;
-            _gr = _pb.CreateGraphics();
+            _graphics = _pictureBox.CreateGraphics();
             _debugText = debugBox;
             _thrustInputTextBox = thrustInputTextBox;
         }
@@ -59,10 +59,10 @@ namespace WindowsFormsApplication1
         private void RefreashPicture()
         {
             _fon = new SolidBrush(Color.LightGoldenrodYellow);
-            _gr.FillRectangle(_fon, 0, 0, _pb.Width, _pb.Height);
+            _graphics.FillRectangle(_fon, 0, 0, _pictureBox.Width, _pictureBox.Height);
 
-            _gr.DrawLine(_penLines, spaceWidth / 2, 0, spaceWidth / 2, spaceHeight);
-            _gr.DrawLine(_penLines, 0, spaceHeight / 2, spaceWidth, spaceHeight / 2);
+            _graphics.DrawLine(_penLines, spaceWidth / 2, 0, spaceWidth / 2, spaceHeight);
+            _graphics.DrawLine(_penLines, 0, spaceHeight / 2, spaceWidth, spaceHeight / 2);
         }
         private void viewRobot()
         {
@@ -71,9 +71,8 @@ namespace WindowsFormsApplication1
             realPoint robotPoint = convertToPixelCoor(origin, serverRobotPoint);
             double robot_R = getParam((int)paramInd.R);
             robot_R = robot_R *spaceWidth;
-            _gr.DrawEllipse(_penLines, (int)(robotPoint.x - robot_R / 2), (int)(robotPoint.y - robot_R / 2), 
-                (float)robot_R, (float)robot_R);
-            //_debugText.Text = ((float)robot_R).ToString();
+            _graphics.DrawEllipse(_penLines, (int)(robotPoint.x - robot_R / 2), (int)(robotPoint.y - robot_R / 2), (float)robot_R, (float)robot_R);
+          
             viewVector(robotPoint, new realPoint(getParam((int)paramInd.VRX), getParam((int)paramInd.VRY)), new Pen(Color.Green));
             viewVector(robotPoint,new realPoint(_currentThrustVector_X, _currnetThrustVector_Y), new Pen(Color.Red));
         }
@@ -82,7 +81,7 @@ namespace WindowsFormsApplication1
             realPoint origin = new realPoint(spaceWidth / 2,spaceHeight/2);
             realPoint serverGP = new realPoint(_currentGoalPoint_X, _currentGoalPoint_Y);
             realPoint pixelGP = convertToPixelCoor(origin, serverGP);
-            _gr.FillRectangle(Brushes.PaleVioletRed, (float)pixelGP.x-2.5f, (float)pixelGP.y-2.5f, 5, 5);
+            _graphics.FillRectangle(Brushes.PaleVioletRed, (float)pixelGP.x-2.5f, (float)pixelGP.y-2.5f, 5, 5);
         }
         private double getParam(int i)
         {
@@ -95,9 +94,8 @@ namespace WindowsFormsApplication1
         {
             realPoint origin = new realPoint(robotPoint.x, robotPoint.y);
             realPoint pixelPoint = convertToPixelCoor(origin, serverVectorPoint);
-            _gr.DrawLine(pen, new Point((int)robotPoint.x, (int)robotPoint.y),
-                new Point((int)pixelPoint.x, (int)pixelPoint.y));
-            //_debugText.Text = pixelPoint.x.ToString();
+            _graphics.DrawLine(pen, new Point((int)robotPoint.x, (int)robotPoint.y),new Point((int)pixelPoint.x, (int)pixelPoint.y));
+        
         }
         private realPoint convertToPixelCoor(realPoint origin, realPoint server)
         {
@@ -106,11 +104,11 @@ namespace WindowsFormsApplication1
             return new realPoint(x, y);
         }
 
-        private Graphics _gr;
+        private Graphics _graphics;
         private Pen _penLines = new Pen(Color.Black);
         private Pen _penPoints = new Pen(Color.PaleVioletRed);
         private SolidBrush _fon;
-        private PictureBox _pb;
+        private PictureBox _pictureBox;
 
         private TextBox[] _listOfParamTextBoxes;
         private TextBox[] _thrustInputTextBox;

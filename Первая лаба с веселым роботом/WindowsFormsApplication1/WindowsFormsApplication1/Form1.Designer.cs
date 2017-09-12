@@ -62,12 +62,6 @@
             this.title_TY = new System.Windows.Forms.TextBox();
             this.textBox_TX = new System.Windows.Forms.TextBox();
             this.title_TX = new System.Windows.Forms.TextBox();
-            this.textBox38 = new System.Windows.Forms.TextBox();
-            this.textBox39 = new System.Windows.Forms.TextBox();
-            this.textBox40 = new System.Windows.Forms.TextBox();
-            this.textBox41 = new System.Windows.Forms.TextBox();
-            this.textBox_Speed = new System.Windows.Forms.TextBox();
-            this.textBox43 = new System.Windows.Forms.TextBox();
             this.textBox_FRY = new System.Windows.Forms.TextBox();
             this.textBox45 = new System.Windows.Forms.TextBox();
             this.textBox_FRX = new System.Windows.Forms.TextBox();
@@ -77,6 +71,8 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.textBox_pointT = new System.Windows.Forms.TextBox();
+            this.textBox_point = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -239,7 +235,7 @@
             // 
             // textBox_ERROR
             // 
-            this.textBox_ERROR.Location = new System.Drawing.Point(99, 260);
+            this.textBox_ERROR.Location = new System.Drawing.Point(99, 280);
             this.textBox_ERROR.Name = "textBox_ERROR";
             this.textBox_ERROR.ReadOnly = true;
             this.textBox_ERROR.Size = new System.Drawing.Size(100, 20);
@@ -247,7 +243,7 @@
             // 
             // title_ERROR
             // 
-            this.title_ERROR.Location = new System.Drawing.Point(2, 260);
+            this.title_ERROR.Location = new System.Drawing.Point(2, 280);
             this.title_ERROR.Name = "title_ERROR";
             this.title_ERROR.ReadOnly = true;
             this.title_ERROR.Size = new System.Drawing.Size(100, 20);
@@ -256,7 +252,7 @@
             // 
             // textBox_DONE
             // 
-            this.textBox_DONE.Location = new System.Drawing.Point(99, 242);
+            this.textBox_DONE.Location = new System.Drawing.Point(99, 262);
             this.textBox_DONE.Name = "textBox_DONE";
             this.textBox_DONE.ReadOnly = true;
             this.textBox_DONE.Size = new System.Drawing.Size(100, 20);
@@ -264,7 +260,7 @@
             // 
             // title_DONE
             // 
-            this.title_DONE.Location = new System.Drawing.Point(2, 242);
+            this.title_DONE.Location = new System.Drawing.Point(2, 262);
             this.title_DONE.Name = "title_DONE";
             this.title_DONE.ReadOnly = true;
             this.title_DONE.Size = new System.Drawing.Size(100, 20);
@@ -273,7 +269,7 @@
             // 
             // textBox_FUEL
             // 
-            this.textBox_FUEL.Location = new System.Drawing.Point(99, 225);
+            this.textBox_FUEL.Location = new System.Drawing.Point(99, 245);
             this.textBox_FUEL.Name = "textBox_FUEL";
             this.textBox_FUEL.ReadOnly = true;
             this.textBox_FUEL.Size = new System.Drawing.Size(100, 20);
@@ -281,7 +277,7 @@
             // 
             // title_FUEL
             // 
-            this.title_FUEL.Location = new System.Drawing.Point(2, 225);
+            this.title_FUEL.Location = new System.Drawing.Point(2, 245);
             this.title_FUEL.Name = "title_FUEL";
             this.title_FUEL.ReadOnly = true;
             this.title_FUEL.Size = new System.Drawing.Size(100, 20);
@@ -290,7 +286,7 @@
             // 
             // textBox_CRASH
             // 
-            this.textBox_CRASH.Location = new System.Drawing.Point(99, 208);
+            this.textBox_CRASH.Location = new System.Drawing.Point(99, 228);
             this.textBox_CRASH.Name = "textBox_CRASH";
             this.textBox_CRASH.ReadOnly = true;
             this.textBox_CRASH.Size = new System.Drawing.Size(100, 20);
@@ -298,7 +294,7 @@
             // 
             // title_CRASH
             // 
-            this.title_CRASH.Location = new System.Drawing.Point(2, 208);
+            this.title_CRASH.Location = new System.Drawing.Point(2, 228);
             this.title_CRASH.Name = "title_CRASH";
             this.title_CRASH.ReadOnly = true;
             this.title_CRASH.Size = new System.Drawing.Size(100, 20);
@@ -307,7 +303,7 @@
             // 
             // textBox_FALL
             // 
-            this.textBox_FALL.Location = new System.Drawing.Point(99, 191);
+            this.textBox_FALL.Location = new System.Drawing.Point(99, 211);
             this.textBox_FALL.Name = "textBox_FALL";
             this.textBox_FALL.ReadOnly = true;
             this.textBox_FALL.Size = new System.Drawing.Size(100, 20);
@@ -315,7 +311,7 @@
             // 
             // title_FALL
             // 
-            this.title_FALL.Location = new System.Drawing.Point(2, 191);
+            this.title_FALL.Location = new System.Drawing.Point(2, 211);
             this.title_FALL.Name = "title_FALL";
             this.title_FALL.ReadOnly = true;
             this.title_FALL.Size = new System.Drawing.Size(100, 20);
@@ -373,61 +369,16 @@
             this.title_TX.TabIndex = 18;
             this.title_TX.Text = "TX";
             // 
-            // textBox38
-            // 
-            this.textBox38.Location = new System.Drawing.Point(99, 456);
-            this.textBox38.Name = "textBox38";
-            this.textBox38.Size = new System.Drawing.Size(100, 20);
-            this.textBox38.TabIndex = 45;
-            // 
-            // textBox39
-            // 
-            this.textBox39.Location = new System.Drawing.Point(2, 456);
-            this.textBox39.Name = "textBox39";
-            this.textBox39.Size = new System.Drawing.Size(100, 20);
-            this.textBox39.TabIndex = 44;
-            this.textBox39.Text = "Доп. зад.";
-            // 
-            // textBox40
-            // 
-            this.textBox40.Location = new System.Drawing.Point(99, 439);
-            this.textBox40.Name = "textBox40";
-            this.textBox40.Size = new System.Drawing.Size(100, 20);
-            this.textBox40.TabIndex = 43;
-            // 
-            // textBox41
-            // 
-            this.textBox41.Location = new System.Drawing.Point(2, 439);
-            this.textBox41.Name = "textBox41";
-            this.textBox41.Size = new System.Drawing.Size(100, 20);
-            this.textBox41.TabIndex = 42;
-            this.textBox41.Text = "Коеф. возд.";
-            // 
-            // textBox_Speed
-            // 
-            this.textBox_Speed.Location = new System.Drawing.Point(99, 422);
-            this.textBox_Speed.Name = "textBox_Speed";
-            this.textBox_Speed.Size = new System.Drawing.Size(100, 20);
-            this.textBox_Speed.TabIndex = 41;
-            // 
-            // textBox43
-            // 
-            this.textBox43.Location = new System.Drawing.Point(2, 422);
-            this.textBox43.Name = "textBox43";
-            this.textBox43.Size = new System.Drawing.Size(100, 20);
-            this.textBox43.TabIndex = 40;
-            this.textBox43.Text = "Скорость";
-            // 
             // textBox_FRY
             // 
-            this.textBox_FRY.Location = new System.Drawing.Point(99, 382);
+            this.textBox_FRY.Location = new System.Drawing.Point(99, 404);
             this.textBox_FRY.Name = "textBox_FRY";
             this.textBox_FRY.Size = new System.Drawing.Size(100, 20);
             this.textBox_FRY.TabIndex = 39;
             // 
             // textBox45
             // 
-            this.textBox45.Location = new System.Drawing.Point(2, 382);
+            this.textBox45.Location = new System.Drawing.Point(2, 404);
             this.textBox45.Name = "textBox45";
             this.textBox45.Size = new System.Drawing.Size(100, 20);
             this.textBox45.TabIndex = 38;
@@ -435,14 +386,14 @@
             // 
             // textBox_FRX
             // 
-            this.textBox_FRX.Location = new System.Drawing.Point(99, 365);
+            this.textBox_FRX.Location = new System.Drawing.Point(99, 387);
             this.textBox_FRX.Name = "textBox_FRX";
             this.textBox_FRX.Size = new System.Drawing.Size(100, 20);
             this.textBox_FRX.TabIndex = 37;
             // 
             // textBox47
             // 
-            this.textBox47.Location = new System.Drawing.Point(2, 365);
+            this.textBox47.Location = new System.Drawing.Point(2, 387);
             this.textBox47.Name = "textBox47";
             this.textBox47.Size = new System.Drawing.Size(100, 20);
             this.textBox47.TabIndex = 36;
@@ -450,7 +401,7 @@
             // 
             // textBox_IGNORED
             // 
-            this.textBox_IGNORED.Location = new System.Drawing.Point(99, 277);
+            this.textBox_IGNORED.Location = new System.Drawing.Point(99, 297);
             this.textBox_IGNORED.Name = "textBox_IGNORED";
             this.textBox_IGNORED.ReadOnly = true;
             this.textBox_IGNORED.Size = new System.Drawing.Size(100, 20);
@@ -458,7 +409,7 @@
             // 
             // title_IGNORED
             // 
-            this.title_IGNORED.Location = new System.Drawing.Point(2, 277);
+            this.title_IGNORED.Location = new System.Drawing.Point(2, 297);
             this.title_IGNORED.Name = "title_IGNORED";
             this.title_IGNORED.ReadOnly = true;
             this.title_IGNORED.Size = new System.Drawing.Size(100, 20);
@@ -467,7 +418,7 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(2, 324);
+            this.btnStart.Location = new System.Drawing.Point(2, 346);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 46;
@@ -477,7 +428,7 @@
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(124, 324);
+            this.btnStop.Location = new System.Drawing.Point(124, 346);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(75, 23);
             this.btnStop.TabIndex = 47;
@@ -493,20 +444,34 @@
             this.pictureBox1.TabIndex = 48;
             this.pictureBox1.TabStop = false;
             // 
+            // textBox_pointT
+            // 
+            this.textBox_pointT.Location = new System.Drawing.Point(2, 192);
+            this.textBox_pointT.Name = "textBox_pointT";
+            this.textBox_pointT.ReadOnly = true;
+            this.textBox_pointT.Size = new System.Drawing.Size(100, 20);
+            this.textBox_pointT.TabIndex = 49;
+            this.textBox_pointT.Text = "POINT";
+            this.textBox_pointT.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            // 
+            // textBox_point
+            // 
+            this.textBox_point.Location = new System.Drawing.Point(99, 192);
+            this.textBox_point.Name = "textBox_point";
+            this.textBox_point.ReadOnly = true;
+            this.textBox_point.Size = new System.Drawing.Size(100, 20);
+            this.textBox_point.TabIndex = 50;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(826, 623);
+            this.Controls.Add(this.textBox_point);
+            this.Controls.Add(this.textBox_pointT);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnStart);
-            this.Controls.Add(this.textBox38);
-            this.Controls.Add(this.textBox39);
-            this.Controls.Add(this.textBox40);
-            this.Controls.Add(this.textBox41);
-            this.Controls.Add(this.textBox_Speed);
-            this.Controls.Add(this.textBox43);
             this.Controls.Add(this.textBox_FRY);
             this.Controls.Add(this.textBox45);
             this.Controls.Add(this.textBox_FRX);
@@ -592,12 +557,6 @@
         private System.Windows.Forms.TextBox title_TY;
         private System.Windows.Forms.TextBox textBox_TX;
         private System.Windows.Forms.TextBox title_TX;
-        private System.Windows.Forms.TextBox textBox38;
-        private System.Windows.Forms.TextBox textBox39;
-        private System.Windows.Forms.TextBox textBox40;
-        private System.Windows.Forms.TextBox textBox41;
-        private System.Windows.Forms.TextBox textBox_Speed;
-        private System.Windows.Forms.TextBox textBox43;
         private System.Windows.Forms.TextBox textBox_FRY;
         private System.Windows.Forms.TextBox textBox45;
         private System.Windows.Forms.TextBox textBox_FRX;
@@ -607,6 +566,8 @@
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox textBox_pointT;
+        private System.Windows.Forms.TextBox textBox_point;
     }
 }
 
