@@ -12,7 +12,6 @@ E:\системы рв\первая лаба\Labs\Первая лаба с ве�
 E:\системы рв\первая лаба\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
 E:\системы рв\первая лаба\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
 E:\системы рв\первая лаба\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
-E:\системы рв\первая лаба\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
 E:\системы рв\первая лаба\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
 E:\системы рв\первая лаба\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
 E:\системы рв\первая лаба\Labs\Первая лаба с веселым роботом\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache

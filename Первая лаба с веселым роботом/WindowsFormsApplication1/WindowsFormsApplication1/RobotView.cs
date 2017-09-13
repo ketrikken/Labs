@@ -44,7 +44,7 @@ namespace WindowsFormsApplication1
             viewCurrentGoalPoint();//отрисовка текущей целевой точки
         }
 
-        public void setCurrentGoalPointHandler(float x,float y)
+        public void setCurrentGoalPointHandler(float x, float y)
         {
             _currentGoalPoint_X = x;
             _currentGoalPoint_Y = y;
@@ -78,10 +78,10 @@ namespace WindowsFormsApplication1
         }
         private void viewCurrentGoalPoint()
         {
-            realPoint origin = new realPoint(spaceWidth / 2,spaceHeight/2);
+            realPoint origin = new realPoint(spaceWidth / 2, spaceHeight/2);
             realPoint serverGP = new realPoint(_currentGoalPoint_X, _currentGoalPoint_Y);
             realPoint pixelGP = convertToPixelCoor(origin, serverGP);
-            _graphics.FillRectangle(Brushes.PaleVioletRed, (float)pixelGP.x-2.5f, (float)pixelGP.y-2.5f, 5, 5);
+            _graphics.FillRectangle(Brushes.PaleVioletRed, (float)pixelGP.x - 2.5f, (float)pixelGP.y - 2.5f, 5, 5);
         }
         private double getParam(int i)
         {

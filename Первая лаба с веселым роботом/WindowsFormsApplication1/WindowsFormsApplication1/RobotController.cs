@@ -31,6 +31,9 @@ namespace WindowsFormsApplication1
             _currentGoalPoint_X = 0;
             _currentGoalPoint_Y = 0;
         }
+
+        int count = 0;
+        double predTask = -1;
         double pastDistanceForPoint = 400;
         //делегат и событие прихода сообщения от сервера
         public delegate void messageDispatcher();
@@ -152,8 +155,10 @@ namespace WindowsFormsApplication1
                     setCurrentGoalPointForRouteMode();
                     break;
                 case 3:
-                    _currentGoalPoint_X = Convert.ToInt32(_listOfParamTextBoxes[(int)paramInd.TX].Text.ToString());
-                    _currentGoalPoint_Y = Convert.ToInt32(_listOfParamTextBoxes[(int)paramInd.TY].Text.ToString());
+                   _currentGoalPoint_X = (float)getParam((int)paramInd.TX) ;
+                   _currentGoalPoint_Y = (float)(getParam((int)paramInd.TY));
+                    _connectTextBox.Text += "    " + _currentGoalPoint_X.ToString();
+                   
                     break;
             }
             changeCurrentGoalPoint(_currentGoalPoint_X, _currentGoalPoint_Y);
@@ -163,39 +168,39 @@ namespace WindowsFormsApplication1
             int i = Convert.ToInt32(_listOfParamTextBoxes[(int)paramInd.POINT].Text.ToString());
             switch (i)
             {
+                /* case 1: 
+                _currentGoalPoint_X = 0; 
+                _currentGoalPoint_Y = 0; 
+                break;*/
                 case 0:
-                    _currentGoalPoint_X = 0;
+                    _currentGoalPoint_X = 0.7f;
                     _currentGoalPoint_Y = 0;
                     break;
                 case 1:
-                    _currentGoalPoint_X = 0.7f;
-                    _currentGoalPoint_Y = 0;
-                    break;
-                case 2:
                     _currentGoalPoint_X = 0;
                     _currentGoalPoint_Y = 0.7f;
                     break;
-                case 3:
+                case 2:
                     _currentGoalPoint_X = -0.3f;
                     _currentGoalPoint_Y = 0;
                     break;
-                case 4:
-                    _currentGoalPoint_X = 0;
-                    _currentGoalPoint_Y = -0.7f;
-                    break;
-                case 5:
+                case 3:
                     _currentGoalPoint_X = -0.7f;
                     _currentGoalPoint_Y = 0;
                     break;
-                case 6:
+                case 4:
                     _currentGoalPoint_X = 0.7f;
                     _currentGoalPoint_Y = 0;
                     break;
-                case 7:
+                /*case 5:
+                    _currentGoalPoint_X = 0.7f;
+                    _currentGoalPoint_Y = 0;
+                    break;*/
+                case 5:
                     _currentGoalPoint_X = 0;
                     _currentGoalPoint_Y = -0.8f;
                     break;
-                    
+
             }
         }
         private double getParam(int i)
@@ -204,22 +209,55 @@ namespace WindowsFormsApplication1
             tx = tx.Replace('.', ',');
             return System.Convert.ToDouble(tx);
         }
-        private void headToCurrentPoint()
+
+        private realPoint ReturnVectorToPoint()
         {
+            realPoint point = new realPoint();
             double robot_X_Pos = getParam((int)paramInd.RX);
             double robot_Y_Pos = getParam((int)paramInd.RY);
+            double _vx = getParam((int)paramInd.VRX);
+            double _vy = getParam((int)paramInd.VRY);
 
-            double distanceForPoint = Math.Sqrt(Math.Pow((robot_X_Pos - _currentGoalPoint_X), 2) + Math.Pow((robot_Y_Pos - _currentGoalPoint_Y), 2));
+            double vecToPointX =  - robot_X_Pos + _currentGoalPoint_X;
+            double vecToPointY = - robot_Y_Pos + _currentGoalPoint_Y;
 
-            if (distanceForPoint >= pastDistanceForPoint)
-                sendMessage((float)(robot_X_Pos * (1) + _currentGoalPoint_X), (float)(robot_Y_Pos * (1) - _currentGoalPoint_Y));
-            else
-                sendMessage(0, 0);
-            pastDistanceForPoint = distanceForPoint;
-           
+            double vecFromCentreX = _vx - robot_X_Pos;
+            double vecFromCentreY = _vy - robot_Y_Pos;
+
+
+
+            point.x = vecToPointX - vecFromCentreX;
+            point.y = vecToPointY - vecFromCentreY;
+            return point;
         }
 
-       
+        private void headToCurrentPoint()
+        {
+            realPoint point = new realPoint();
+            double robot_X_Pos = getParam((int)paramInd.RX);
+            double robot_Y_Pos = getParam((int)paramInd.RY);
+            double SpeedVec_PosX = getParam((int)paramInd.VRX);
+            double SpeedVec_PosY = getParam((int)paramInd.VRY);
+            double _vx = getParam((int)paramInd.VRX);
+            double _vy = getParam((int)paramInd.VRY);
+
+
+            double vecRast = (robot_X_Pos - _currentGoalPoint_X) * (robot_X_Pos - _currentGoalPoint_X) + (robot_Y_Pos - _currentGoalPoint_Y) * (robot_Y_Pos - _currentGoalPoint_Y);
+
+
+            double vecToPointX = -robot_X_Pos + _currentGoalPoint_X -_vx ;
+            double vecToPointY = -robot_Y_Pos + _currentGoalPoint_Y - _vy;
+
+         
+
+            sendMessage((float)(-vecToPointX * 32), (float)(-vecToPointY * 32));
+            
+
+            pastLen = vecRast;
+            
+        }
+
+        double pastLen = 0;
 
 
 
