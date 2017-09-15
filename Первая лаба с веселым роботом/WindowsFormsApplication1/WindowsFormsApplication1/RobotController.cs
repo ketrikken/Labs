@@ -39,7 +39,7 @@ namespace WindowsFormsApplication1
         public delegate void messageDispatcher();
         public event messageDispatcher messageFromServerEvent;
         //делегат и событие изменения целевой точки
-        public delegate void changeGoalPoint(float x, float y);
+        public delegate void changeGoalPoint(float x, float y,float r);
         public event changeGoalPoint changeCurrentGoalPoint;
         //делегат и событие изменения вектора тяги робота
         public delegate void changeThrustVector(float x, float y);
@@ -56,7 +56,15 @@ namespace WindowsFormsApplication1
         public void closeCallBack()
         {
             _flagClose = true;
-            _client.Close();
+            clearData();
+            //_client.Disconnect(true);
+            
+        }
+        private void clearData()
+        {
+            _connectTextBox.Clear();
+            for (int i = 0; i < _listOfParamTextBoxes.Count(); ++i)
+                _listOfParamTextBoxes[i].Clear();
         }
         /// <summary>
         /// Здесь писать логику отправки управляющих сообщений на сервер!!!
@@ -145,6 +153,7 @@ namespace WindowsFormsApplication1
         private void setCurrentGoalPoint()
         {
             int i = Convert.ToInt32(_listOfParamTextBoxes[(int)paramInd.TASK].Text.ToString());
+            float r = 0;
             switch (i)
             {
                 case 1:
@@ -157,11 +166,11 @@ namespace WindowsFormsApplication1
                 case 3:
                    _currentGoalPoint_X = (float)getParam((int)paramInd.TX) ;
                    _currentGoalPoint_Y = (float)(getParam((int)paramInd.TY));
-                    _connectTextBox.Text += "    " + _currentGoalPoint_X.ToString();
-                   
+                    //_connectTextBox.Text += "    " + _currentGoalPoint_X.ToString();
+                   r = (float)getParam((int)paramInd.TR);
                     break;
             }
-            changeCurrentGoalPoint(_currentGoalPoint_X, _currentGoalPoint_Y);
+            changeCurrentGoalPoint(_currentGoalPoint_X, _currentGoalPoint_Y,r);
         }
         private void setCurrentGoalPointForRouteMode()
         {
@@ -242,22 +251,26 @@ namespace WindowsFormsApplication1
             double _vy = getParam((int)paramInd.VRY);
 
 
-            double vecRast = (robot_X_Pos - _currentGoalPoint_X) * (robot_X_Pos - _currentGoalPoint_X) + (robot_Y_Pos - _currentGoalPoint_Y) * (robot_Y_Pos - _currentGoalPoint_Y);
+            //double vecRast = (robot_X_Pos - _currentGoalPoint_X) * (robot_X_Pos - _currentGoalPoint_X) + (robot_Y_Pos - _currentGoalPoint_Y) * (robot_Y_Pos - _currentGoalPoint_Y);
 
 
             double vecToPointX = -robot_X_Pos + _currentGoalPoint_X -_vx ;
             double vecToPointY = -robot_Y_Pos + _currentGoalPoint_Y - _vy;
 
          
-
+            if ((pastSentToServerX != (-vecToPointX * 32)) && (pastSentToServerY != (-vecToPointY * 32)) )
             sendMessage((float)(-vecToPointX * 32), (float)(-vecToPointY * 32));
-            
 
-            pastLen = vecRast;
-            
+            pastSentToServerX = -vecToPointX * 32;
+            pastSentToServerY = -vecToPointY * 32;
+            time = DateTime.Now;
+            //pastLen = vecRast;
+
         }
-
-        double pastLen = 0;
+        DateTime time;
+        double pastSentToServerX = 0;
+        double pastSentToServerY = 0;
+        //double pastLen = 0;
 
 
 

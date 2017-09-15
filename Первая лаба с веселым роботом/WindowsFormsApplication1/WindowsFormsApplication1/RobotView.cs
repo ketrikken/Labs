@@ -44,10 +44,11 @@ namespace WindowsFormsApplication1
             viewCurrentGoalPoint();//отрисовка текущей целевой точки
         }
 
-        public void setCurrentGoalPointHandler(float x, float y)
+        public void setCurrentGoalPointHandler(float x, float y, float r)
         {
             _currentGoalPoint_X = x;
             _currentGoalPoint_Y = y;
+            _radiusOfCurrentGoalPoint = r;
         }//обработчик события изменения целевой точки
         public void setCurrentThrustVector(float x, float y)
         {
@@ -82,6 +83,12 @@ namespace WindowsFormsApplication1
             realPoint serverGP = new realPoint(_currentGoalPoint_X, _currentGoalPoint_Y);
             realPoint pixelGP = convertToPixelCoor(origin, serverGP);
             _graphics.FillRectangle(Brushes.PaleVioletRed, (float)pixelGP.x - 2.5f, (float)pixelGP.y - 2.5f, 5, 5);
+
+            if (_radiusOfCurrentGoalPoint > 0)
+            {
+                _radiusOfCurrentGoalPoint *= spaceWidth;
+                _graphics.DrawEllipse(_penLines, (float)pixelGP.x- _radiusOfCurrentGoalPoint/2,(float)pixelGP.y- _radiusOfCurrentGoalPoint/2, _radiusOfCurrentGoalPoint, _radiusOfCurrentGoalPoint);
+            }
         }
         private double getParam(int i)
         {
@@ -117,6 +124,7 @@ namespace WindowsFormsApplication1
 
         private float _currentGoalPoint_X;
         private float _currentGoalPoint_Y;
+        private float _radiusOfCurrentGoalPoint;
 
         private float _currentThrustVector_X;
         private float _currnetThrustVector_Y;

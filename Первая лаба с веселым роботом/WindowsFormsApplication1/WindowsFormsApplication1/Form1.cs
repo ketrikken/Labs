@@ -29,6 +29,8 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            rc = new RobotController(textBox_connectInfo, textBoxes);
+            rv = new RobotView(pictureBox1, textBoxes, textBox_connectInfo, new[] { textBox_FRX, textBox_FRY });
         }
 
         private void button1_Click(object sender, EventArgs e)

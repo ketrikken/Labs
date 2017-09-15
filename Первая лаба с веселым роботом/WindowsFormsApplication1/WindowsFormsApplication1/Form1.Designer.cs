@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnSendMessage = new System.Windows.Forms.Button();
             this.textBox_connectInfo = new System.Windows.Forms.TextBox();
             this.title_T = new System.Windows.Forms.TextBox();
             this.textBox_T = new System.Windows.Forms.TextBox();
@@ -76,22 +75,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnSendMessage
-            // 
-            this.btnSendMessage.Location = new System.Drawing.Point(652, 18);
-            this.btnSendMessage.Name = "btnSendMessage";
-            this.btnSendMessage.Size = new System.Drawing.Size(122, 40);
-            this.btnSendMessage.TabIndex = 0;
-            this.btnSendMessage.Text = "button1";
-            this.btnSendMessage.UseVisualStyleBackColor = true;
-            this.btnSendMessage.Click += new System.EventHandler(this.button1_Click);
-            // 
             // textBox_connectInfo
             // 
-            this.textBox_connectInfo.Location = new System.Drawing.Point(220, 12);
+            this.textBox_connectInfo.Location = new System.Drawing.Point(237, 12);
             this.textBox_connectInfo.Multiline = true;
             this.textBox_connectInfo.Name = "textBox_connectInfo";
-            this.textBox_connectInfo.Size = new System.Drawing.Size(416, 46);
+            this.textBox_connectInfo.Size = new System.Drawing.Size(530, 46);
             this.textBox_connectInfo.TabIndex = 1;
             this.textBox_connectInfo.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -466,7 +455,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(826, 623);
+            this.ClientSize = new System.Drawing.Size(786, 623);
             this.Controls.Add(this.textBox_point);
             this.Controls.Add(this.textBox_pointT);
             this.Controls.Add(this.pictureBox1);
@@ -511,7 +500,6 @@
             this.Controls.Add(this.textBox_T);
             this.Controls.Add(this.title_T);
             this.Controls.Add(this.textBox_connectInfo);
-            this.Controls.Add(this.btnSendMessage);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -522,8 +510,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnSendMessage;
         private System.Windows.Forms.TextBox textBox_connectInfo;
         private System.Windows.Forms.TextBox title_T;
         private System.Windows.Forms.TextBox textBox_T;
